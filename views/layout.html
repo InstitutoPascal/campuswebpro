@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{=T.accepted_language or 'en'}}">
+  <head>
+    <title>{{=response.subtitle or request.function}} - {{=response.title or request.controller}} - Instituto Superior Tecnológico Blaise Pascal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />     
+    {{response.files.append(URL(request.application,'static','base.css'))}}
+    {{include 'web2py_ajax.html'}}
+<script type="text/javascript">
+<!--
+/* this adds sfhover class to menu li items to make IE6 work */
+jQuery(document).ready(function(){
+    jQuery('li.web2py-menu-expand').hover(
+        function () {
+            jQuery(this).addClass('sfhover');
+        },
+        function () {
+            jQuery(this).removeClass('sfhover');
+        }
+    );
+});
+//-->
+</script> 
+  </head>
+  <body style="background-image: url({{=URL(r=request,c='static',f='splash_isbp.jpg')}})">
+    <div class="wrapper">
+      <table class="layout">
+        <tr>
+          <td colspan="3"  class="header">
+            <a href="{{=URL(r=request,c='default',f='index')}}"><img src="{{=URL(request.application,'static','logo_pascal.png')}}" style="float:left" border="0"/></a>
+            <h1><a href="{{=URL(r=request,c='default',f='index')}}">Instituto Superior Tecnológico Blaise Pascal</a></h1>
+            Puerto Argentino 4238 - González Catan  (1759) - Provincia de Buenos Aires - Argentina -
+            Teléfono 02202-423336/427725 <a href="mailto:info@institutopascal.edu.ar" style="color: #9999FF">info@institutopascal.edu.ar</a>
+            <h2>{{=response.title or request.application}}</h2>            
+            <h3 class="subtitle">{{=response.subtitle or request.function}}</h3>
+            <div class="statusbar">
+                {{ if 'auth' in globals():}}
+                [ {{if not auth.user:}}
+                <a href="{{=URL(r=request,c='default',f='user/login')}}">{{=T('login')}}</a> |
+                <a href="{{=URL(r=request,c='default',f='user/register')}}">{{=T('register')}}</a> |
+                <a href="{{=URL(r=request,c='default',f='user/request_reset_password')}}">{{=T('lost password')}}</a>
+                {{else:}}
+                {{=auth.user.first_name}} |
+                <a href="{{=URL(r=request,c='default',f='user/logout')}}">{{=T('logout')}}</a> |
+                <a href="{{=URL(r=request,c='default',f='user/change_password')}}">{{=T('change password')}}</a> |
+                <a href="{{=URL(r=request,c='default',f='user/profile')}}">{{=T('edit profile')}}</a>
+                {{pass}} ]
+                {{pass}}
+                {{=T("Language")}}&nbsp;<a href="?lang=es">Español</a>&nbsp;<a href="?lang=en">English</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="width10em column1">
+            {{if response.menu:}}
+            <h3>{{=T('Main Menu')}}</h3>
+            {{=MENU(response.menu)}}
+            {{pass}}
+            {{if response.menu_edit:}}
+            <h3>{{=T('Edit This App')}}</h3>
+            {{=MENU(response.menu_edit)}}
+            {{pass}}
+            <br />
+          </td>
+          <td class="expandable column2">
+            <div class="flash">{{=response.flash or ''}}</div>
+            <div class="body">
+            {{include}}
+            </div>
+          </td>
+          <!--
+               <td class="width10em column3">
+                 <h2>Right Column</h2>
+               </td>
+          //-->
+        </tr>
+        <tr>
+          <td colspan="10" class="footer" align="center">
+DIPREGEP 6131 - Colegio Universitario - Carreras Terciarias Oficiales - 
+             {{=T('Copyright')}} &copy; 2010 - 
+             {{=T('Powered by')}} <a class="menu_foot" href="http://www.web2py.com.ar"><img alt="web2py" src="{{=URL(r=request,c='static',f='web2py_logo_small.png')}}" border="0"></a>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15712735-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+  </body>
+</html>

@@ -227,7 +227,7 @@ def insert_periodo():
     filas= db1.executesql('SELECT * FROM periodos', as_dict= True)
     
     for fila in filas:
-    
+        print fila
         db.periodos.insert(periodoid= fila['periodoid'], 
                             periodo= fila['periodo'], 
                             nivelid= fila['nivelid'], 
@@ -367,6 +367,50 @@ def insert_inscripcioncomision():
         db.inscripcionescomision.insert(inscripcionid= fila['inscripcionid'], 
                             alumnoid= fila['alumnoid'], 
                             comisionid= fila['comisionid'], 
+                            alta= fila['alta'], 
+                            baja= fila['baja'], 
+                            condicion= fila['condicion'] )
+        
+    return {'filas': filas}
+    
+def insert_situaciones():
+    
+    filas= db1.executesql('SELECT * FROM situaciones', as_dict= True)
+    
+    for fila in filas:
+    
+        db.situaciones.insert(situacionid= fila['situacionid'], 
+                            situacion= fila['situacion'] )
+                            
+        
+    return {'filas': filas}
+    
+def insert_inscripcionexamen():
+    
+    filas= db1.executesql('SELECT * FROM inscripcionesexamen', as_dict= True)
+    
+    for fila in filas:
+    
+        db.inscripcionesexamen.insert(inscripcionid= fila['inscripcionid'], 
+                            alumnoid= fila['alumnoid'], 
+                            examenid= fila['examenid'], 
+                            condicion= fila['condicion'], 
+                            alta= fila['alta'], 
+                            baja= fila['baja'], 
+                            confirmar= fila['confirmar'], 
+                            valido= fila['valido'] )
+        
+    return {'filas': filas}
+
+def insert_inscripciondivision():
+    
+    filas= db1.executesql('SELECT * FROM inscripcionesdivision', as_dict= True)
+    
+    for fila in filas:
+    
+        db.inscripcionesdivision.insert(inscripcionid= fila['inscripcionid'], 
+                            alumnoid= fila['alumnoid'], 
+                            divisionid= fila['divisionid'], 
                             alta= fila['alta'], 
                             baja= fila['baja'], 
                             condicion= fila['condicion'] )

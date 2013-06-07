@@ -1,0 +1,133 @@
+TABLE auth_user
+
+
+TABLE auth_group
+
+
+TABLE auth_membership
+
+
+TABLE auth_permission
+
+
+TABLE auth_event
+
+
+TABLE auth_cas
+
+
+TABLE alumnos
+
+
+TABLE asignaturas
+
+
+TABLE calendario
+
+
+TABLE calificaciones
+
+
+TABLE cargos
+
+
+TABLE carreras
+
+
+TABLE catedras
+
+
+TABLE ciclos
+
+
+TABLE comisiones
+
+
+TABLE correlativas
+
+
+TABLE cursos
+
+
+TABLE divisiones
+
+
+TABLE examenes
+
+
+TABLE faltas
+
+
+TABLE horarios
+
+
+TABLE horas
+
+
+TABLE inasistencias
+
+
+TABLE inscripcionescomision
+
+
+TABLE inscripcionesdivision
+
+
+TABLE inscripcionesexamen
+
+
+TABLE materias
+
+
+TABLE niveles
+
+
+TABLE notas
+
+
+TABLE periodos
+
+
+TABLE personal
+
+
+TABLE planesestudio
+
+
+TABLE profesores
+
+
+TABLE revistas
+
+
+TABLE sanciones
+
+
+TABLE secciones
+
+
+TABLE situaciones
+
+
+TABLE titulos
+
+
+TABLE tramites
+
+
+TABLE ubicaciones
+
+
+TABLE estados
+
+
+TABLE expedientes
+
+
+TABLE seguimientos
+
+
+TABLE plugin_flatpage
+
+
+END

@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<h1>Ficha del docente: {{=docente.nombre}}</h1>
+
+{{=IMG(_src=URL(c='default',f='download',args=docente.foto))}}
+<br> 
+<h5>E-mail: {{=docente.E_mail}} </h5>
+<h5> Facebook: {{=docente.facebook}} </h5>
+Titulos: {{=docente.titulos}}<br>

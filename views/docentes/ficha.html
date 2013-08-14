@@ -1,0 +1,22 @@
+{{extend 'layout.html'}}
+<h1>Ficha del docente: {{=docente.nombre}}</h1>
+
+{{=IMG(_src=URL(c='default',f='download',args=docente.foto))}}
+<br> 
+<h5>E-mail: {{=docente.E_mail}} </h5>
+<h5> Facebook: {{=docente.facebook}} </h5>
+Localidad: {{=docente.localidad}}<br>
+Titulos: {{=docente.titulos}}<br>
+
+
+
+
+{{for comision in comisiones:}}
+
+<li>Materia que dicta:{{=comision.nombre}}</li>
+  
+{{pass}}
+ 
+    
+<br></br>    
+<a href="http://127.0.0.1:8000/practica/docentes/index">VOLVER</a>

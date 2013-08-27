@@ -4,35 +4,29 @@
 <h2> <p align= 'right'> Año 2013  </h2>
 <h1> <center><u> Consulta de Inasistencias</u> </center></h1>
 <h3> Alumno: Lucas González </h3>
+<h3> Dni: 37.987.234 </h3>
+<h3> Carrera: Analista de Sistemas </h3>
 
-
+    
 <TABLE style="border: 1px solid white">
-        <TR style="border: 1px solid white">
-            <TD style="border: 1px solid white"> <center>ALUMNO</center></TD>
-            <TD style="border: 1px solid white"> <center>MATERIA</center> </TD>
-            <TD style="border: 1px solid white"> DOCENTE </TD>
-            <TD style="border: 1px solid white"> FALTAS </TD>
-            <TD style="border: 1px solid white"> FECHA </TD>
-        </TR>
-        {{ f=falta}}
+    <TR style="border: 1px solid white">
+    <TD style="border: 1px solid white"> <B>Materias</B></TD>
+    <TD style="border: 1px solid white"> <B>Inasistencias</B></TD> 
+    <TD style="border: 1px solid white"> <B>Fecha</B> </TD> 
+    </TR>
+     {{ f=falta}}
         
-        {{for faltas in f:}}
+        {{for falta in f:}}
             <TR style="border: 1px solid white">
         	<TD style="border: 1px solid white"> 
-        	 {{ =faltas.alumnos.nombre}}
+        	 {{ =falta.materias.nombre}}
         	</TD>
             <TD style="border: 1px solid white">
-             {{ =faltas.materias.nombre}}
+             {{ =falta.faltas.cantidad}}
              </TD>
              <TD style="border: 1px solid white">
-             {{ =faltas.personal.nombre}}
+             {{ =falta.faltas.fecha}}
              </TD>
-             <TD style="border: 1px solid white">
-             {{ =faltas.faltas.cantidad}}
-             </TD>
-             <TD style="border: 1px solid white">
-             {{ =faltas.faltas.fecha}}
         {{pass}}
-        	 </TD>
     		 </TR>
     </TABLE>

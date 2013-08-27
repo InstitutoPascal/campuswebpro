@@ -10,26 +10,31 @@ def index():
     "menu alumnos"
     return dict ()
 
+@auth.requires_login()
+@auth.requires_membership(role='alumnos')
 def ficha():
            
-    # obtengo el registro de los alumnos
-    q= db.alumnos.id>0
+    # obtengo el registro del alumno ya registrado como usuario 
+  
+    q = db.alumnos.user_id== auth.user_id
+ 
     alumno= db(q).select(db.alumnos.nombre, db.alumnos.sexo, 
                          db.alumnos.foto, db.alumnos.email1,
                          db.alumnos.localidad)
                          
-    return dict (alumno=alumno)
+    return dict (alumno=alumno, q=q)
     
 #@auth.requires_login()
-#@auth.requires_membership(role='alumnos1')
 
 
+@auth.requires_login()
 def ingreso():
     db.alumnos.user_id.default= auth.user_id
     subtitulo= T ('Complete el formulario por favor...')
     form=SQLFORM(db.alumnos)
     #db.auth_membership.insert(auth_membership.user_id== db.auth_id, auth_membership.group_id== auth_group.id)
     if form.accepts(request.vars,session):
+        db.auth_membership.insert( auth_membership.user_id== auth.user_id, auth_membership.group_id== 'alumnos')
         response.flash='Usted fue agregado como alumno...'
     elif form.errors: 
         response.flash='Hay errores en el formulario!'
@@ -69,13 +74,15 @@ def horarios():
     q &= db.horarios.comisionid== db.comisiones.comisionid
     q &= db.comisiones.personalid== db.personal.personalid
     q &= db.comisiones.materiaid== db.materias.materiaid
-    filas= db(q).select(db.horas.hora, db.personal.nombre, db.materias.nombre, db.horarios.dia)
+    q &= db.comisiones.divisionid== db.divisiones.divisionid
+    filas= db(q).select(db.horas.hora, db.personal.nombre, db.materias.nombre, db.divisiones.divisionid, db.horarios.dia)
+    
     
     horario = {'lunes':{},'martes':{},'miercoles':{},'jueves':{},'viernes':{}}
     # horario es una estructura cuya clave es el dia y el valor es otro diccionario....
     #  {'lunes': {1: fila} ... }
     for fila in filas:
-        horario[fila.horarios.dia][fila.horas.hora]=fila
+        horario[fila.horarios.dia].setdefault(fila.horas.hora, {})[fila.divisiones.divisionid]= fila
         
     return dict (horario=horario)
     
@@ -83,7 +90,7 @@ def horarios():
         
     
 def inasistencias():
-    
+    alumno= db.alumnos.user_id== auth.user_id
     q= db.faltas.faltaid== db.faltas.faltaid
     q &= db.comisiones.materiaid== db.materias.materiaid
     q &= db.comisiones.personalid== db.personal.personalid
@@ -118,16 +125,20 @@ def examenes():
     return dict (notas= notas)
     
 def final():
+     # a = db().select(db.examenes.ALL)#lista todos
+   q= db.examenes.examenid>0
+   q &= db.examenes.materiaid== db.materias.materiaid
+   q &= db.examenes.personalid1== db.personal.personalid
+    
 
-    "formulario inscripcion a examen finales aptos para el alumno"
-    form=SQLFORM(db.inscripcionesexamen)
-    if form.accepts(request.vars,session):
-        response.flash='Examen  Agregado'
-    elif form.errors:
-        response.flash='Hay un error en el formulario'
-    else:
-        response.flash='Por favor,complete el formulario'
-    return dict (form=form)
+    
+   final= db(q).select(db.materias.nombre, db.personal.nombre, db.examenes.fecha, db.examenes.hora)
+  
+   return dict (final=final) 
+  
+            
+         
+###################################################################################
         
 def parciales():
     # obtengo el parámetro pasado por variable en la url

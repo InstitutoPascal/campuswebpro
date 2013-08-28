@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<h2> <p align= 'right'> Año 2013  </h2>
+<h1> <center> Inscripción a Examenes Finales </center></h1>
+
+{{for f in final:}}
+	
+	<input type="checkbox" name="MATERIAS">{{=f.materias.nombre}} <br>
+{{pass}}

@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+
+
+<h2> <p align= 'right'> Año 2013  </h2>
+<h1> <center><u> Consulta de Inasistencias</u> </center></h1>
+
+    
+<TABLE style="border: 1px solid white">
+    <TR style="border: 1px solid white">
+    <TD style="border: 1px solid white"> <B>Alumno</B></TD>
+     <TD style="border: 1px solid white"> <B>Materias</B></TD>
+    <TD style="border: 1px solid white"> <B>Inasistencias</B></TD> 
+     <TD style="border: 1px solid white"> <B>Descripcion</B></TD>
+    <TD style="border: 1px solid white"> <B>Fecha</B> </TD> 
+    </TR>
+     {{ f=falta}}
+        
+        {{for falta in f:}}
+            <TR style="border: 1px solid white">
+        	<TD style="border: 1px solid white"> 
+        	 {{ =falta.alumnos.nombre}}
+             </TD>
+        	<TD style="border: 1px solid white"> 
+        	 {{ =falta.comisiones.nombre}}
+        	</TD>
+            <TD style="border: 1px solid white">
+             {{ =falta.faltas.cantidad}}
+             </TD>
+        	<TD style="border: 1px solid white"> 
+        	 {{ =falta.inasistencias.descripcion}}
+              </TD>
+             <TD style="border: 1px solid white">
+             {{ =falta.faltas.fecha}}
+             </TD>
+        {{pass}}
+    		 </TR>
+    </TABLE>

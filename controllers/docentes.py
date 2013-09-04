@@ -15,9 +15,12 @@ def busqueda():
         if form.vars.nombre:    
             q &= db.personal.nombre.contains(form.vars.nombre)
         docente = db(q).select().first()
+        
+        
         if docente:
             # encontrado, redirigo a cargar notas por 
             redirect(URL(f=index, vars={'personalid': docente.personal.personalid}))
+            
         else:
             response.flash = "docente no encontrado"
     #response.view = "generic.html"  # HACER una vista de verdad
@@ -28,11 +31,54 @@ def index():
     if request.vars:
         # si me pasan en la URL el docente, lo filtro 
         q=db.personal.personalid == request.vars['personalid']
+
+        redirect(URL(f=ficha, vars={'personalid': docente.personal.personalid}))
+
+        
     else:
         # sino, busco todos los docentes
         q=db.personal.personalid>0
-    docentes=db(q).select()
+    docentes=db(q).select(orderby=db.personal.nombre)
     return{'docentes':docentes}
+    
+def alumnoXcomision():
+    
+    form=SQLFORM.factory (
+               Field('fecha', 'date', default=request.now.date()),
+               )
+               
+        #cuando hago click en el boton guardar
+    if request.vars.grabar=="GUARDAR":
+            #en k tenemos el nombre del checkbox
+        for _name,_value in request.vars.items():
+            if _name.startswith ("falta"):
+                alumno_id = int(_name[_name.index('_')+1:])
+                comision_id = int(_name[_name.index('_')+1:])
+                inasistencia_id = int(_name[_name.index('_')+1:])
+                fecha = request.now.date()
+
+
+
+                if _value == "on":
+                    db.faltas.insert ( alumnoid= alumno_id, comisionid= comision_id,inasistenciaid=inasistencia_id,cantidad=1)
+
+            
+            
+        
+    if request.vars:
+        # si me pasan en la URL el docente, lo filtro 
+        q=db.alumnos.alumnoid == request.vars['alumnoid']
+        
+    else:
+        # sino, busco todos los docentes
+        q=db.alumnos.alumnoid>0
+    alumnos=db(q).select(orderby=db.alumnos.nombre)
+    #db.faltas.insert(alumnoid= 5, comisionid=1,inasistenciaid="martes",fecha=10)
+
+    return{'alumnos':alumnos, 'form': form}
+    
+
+ 
 
 def horarios():
     q=db.horarios.horarioid>0
@@ -59,13 +105,49 @@ def recursos():
     return{}
     
 def asistencias():
-    ""
     
-    return{}
-    
+        form = SQLFORM.factory(
+        Field("materia","string"),)
+        q = db.faltas.id>0
+        q &= db.faltas.comisionid == db.comisiones.comisionid
+        
+        if form.accepts(request.vars, session):
+        
+        
+        
+              q = db.comisiones.comisionid==form.vars.nombre
+              q &= db.faltas.alumnoid==db.alumnos.alumnoid    
+              asistencias=db().select(db.comisiones.nombre, db.alumnos.nombre)
+        else :
+              response.flash="materia no encontrada"
+        
+        return{'asistencias':asistencias}
+
+        
 def ficha():
     # obtengo el id de la url (primer argumento por posicion):
+   
     personalid = request.args[0]
+    
+        
     # obtengo el registro del docente
     docente = db.personal[personalid]
-    return {'docente':docente}
+    
+    q = db.comisiones.personalid == personalid
+    comisiones = db(q).select()
+  
+    return {'docente':docente, 'comisiones':comisiones}
+    
+    
+    
+def ingreso():
+    db.personal.user_id.default= auth.user_id
+    subtitulo= T ('Complete el formulario por favor...')
+    form=SQLFORM(db.personal)
+    if form.accepts(request.vars,session):
+        response.flash='Usted fue agregado como docente...'
+    elif form.errors: 
+        response.flash='Hay errores en el formulario!'
+    else:
+        response.flash='Por favor, complete el formulario!'
+    return dict (form=form, sub=subtitulo)

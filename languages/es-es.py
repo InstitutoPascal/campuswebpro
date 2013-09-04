@@ -207,7 +207,6 @@
 'next 100 rows': '100 filas siguientes',
 'NO': 'NO',
 'No databases in this application': 'No hay bases de datos en esta aplicación',
-'Nombre': 'Nombre',
 'Object or table name': 'Object or table name',
 'or import from csv file': 'o importar desde archivo CSV',
 'or provide application url:': 'o provea URL de la aplicación:',

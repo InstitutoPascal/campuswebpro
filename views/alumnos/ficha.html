@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+
+<h1> PERFIL DEL ALUMNO </h1>
+
+{{=IMG(_src=URL(c='default',f='download',args=alumno.foto))}}<br>
+<h1> Nombre: {{=alumno.nombre}}</h1> 
+<h1> Localidad: {{=alumno.localidad}} </h1>
+<h1> Estado Civil: {{=alumno.estadocivil}} </h1>
+<h1> Fecha de Nacimiento: {{=alumno.fechanacimiento}} </h1> 
+<h1> Nacionalidad: {{=alumno.nacionalidad}}  </h1>
+<h1> Email: {{=alumno.email1}}</h1> 
+<h1> Ingreso: {{=alumno.ingreso}} </h1>
+<h1> carrera: </h1>
+<br>
+<form>
+    <a href="index.html"><input type=button value="Volver" ></a>
+</form>

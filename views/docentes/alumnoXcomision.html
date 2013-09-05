@@ -1,0 +1,46 @@
+{{extend 'layout.html'}}
+
+<FORM ACTION="">
+    <h5><b>FECHA:</h5></b> <INPUT  type="text" NAME="fecha">
+    
+    <br></br>
+
+<table style="border: 1px solid white">
+    <td style="border: 1px solid white"><center> DNI</center>  </td> <td style="border: 1px solid white"> <center>nombre</center> </td> <td style="border: 1px solid white"> presente</td>
+<tr>
+<td style="border: 1px solid white"><ul>
+    
+    {{for alumno in alumnos: }}
+    <li>{{=A(alumno.dni)}} </li>
+
+
+    {{pass}}
+    
+</ul></td>
+
+<td style="border: 1px solid white"><ul>
+    
+    {{for alumno in alumnos: }}
+    <li>{{=A(alumno.nombre)}} </li>
+
+
+    {{pass}}
+    
+</ul> 
+</td>
+<td style="border: 1px solid white">
+    
+    {{for alumno in alumnos: }}
+     
+        <FORM ACTION="">
+        <center><INPUT type="checkbox" NAME="PRESENTE" size="0"></center>
+
+    {{pass}}
+    </td>
+    </tr>
+
+
+</table>
+<br></br>
+<INPUT type="submit" name="GRABAR" value="GUARDAR">
+</FORM>

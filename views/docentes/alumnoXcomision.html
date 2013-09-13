@@ -1,0 +1,51 @@
+{{extend 'layout.html'}}
+<FORM ACTION = "" method="POST">
+    <h5><b>FECHA:</h5></b> <INPUT  type="text" NAME="fecha" VALUE={{=request.now.date()}}>
+
+    <br></br>
+
+
+
+
+<table style="border: 1px solid white">
+    <td style="border: 1px solid white"><center> DNI</center>  </td> <td style="border: 1px solid white"> <center>Nombre</center> </td> <td style="border: 1px solid white"> Ausente</td><center> <td>Tipo de falta</td></center>
+
+{{for alumno in alumnos: }}
+
+<tr>
+<td style="border: 1px solid white"><ul>
+
+    <li>{{=A(alumno.dni)}} </li>
+
+</ul></td>
+
+<td style="border: 1px solid white"><ul>
+    <li>{{=A(alumno.nombre)}} </li>
+</ul>
+</td>
+<td style="border: 1px solid white">
+
+    <center>{{=INPUT (_type="checkbox", _name="falta_%s" %(alumno.id))}}</center>
+
+    </td>
+     <td style="border: 1px solid white">
+         <center> <select name="detalle"> <option>Seleccionar...</option>
+              {{for inasistencia in inasistencias: }}
+				<option>{{=A(inasistencia.descripcion)}}</option>
+			 {{pass}}
+             </select></center>
+     </td>
+
+
+
+    </tr>
+
+{{pass}}
+
+</table>
+    <br></br>
+<a href="http://127.0.0.1:8000/practica/docentes/finales"> CLICK PARA PASAR NOTAS FINALES >>></a>
+
+<br></br>
+<INPUT type="submit" name="grabar" value="GUARDAR">
+</FORM>

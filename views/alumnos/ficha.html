@@ -1,0 +1,46 @@
+{{extend 'layout.html'}}
+<h2> Fecha: {{=request.now.date()}}</h2>
+<h1> <center><u> Perfil</u> </center></h1>
+
+<center>{{=IMG(_src=URL(c='default',f='download',args=alumno.alumnos.foto))}}</center><br>
+<h2><u> Nombre:</u> {{=alumno.alumnos.nombre}}</h2> 
+<h2><u> Localidad:</u> {{=alumno.alumnos.localidad}} </h2>
+<h2><u> Estado Civil:</u> {{=alumno.alumnos.estadocivil}} </h2>
+<h2><u> Fecha de Nacimiento:</u> {{=alumno.alumnos.fechanacimiento}} </h2> 
+<h2><u> Nacionalidad:</u> {{=alumno.alumnos.nacionalidad}}  </h2>
+<h2><u> Email:</u> {{=alumno.alumnos.email1}}</h2> 
+<h2><u> Ingreso:</u> {{=alumno.alumnos.ingreso}} </h2>
+<h2><u> Carrera:</u> {{=alumno.carreras.nombre}}</h2>
+<br>
+<h2><u> Inscripto a las siguientes materias:</u> </h2>
+<TABLE style="border: 1px solid white">
+    <TR style="border: 1px solid white">
+     <TD style="border: 1px solid white"> <B>Materias</B></TD>
+    <TD style="border: 1px solid white"> <B>Fecha de Alta</B></TD> 
+     <TD style="border: 1px solid white"> <B>Año</B></TD>
+    <TD style="border: 1px solid white"> <B>Carrera</B> </TD> 
+    </TR>
+     
+     {{ d=dato}}
+        
+        {{for datos in d:}}
+            <TR style="border: 1px solid white">
+        	<TD style="border: 1px solid white"> 
+        	 {{ =datos.comisiones.nombre}}
+             </TD>
+        	<TD style="border: 1px solid white"> 
+        	 {{ =datos.inscripcionescomision.alta}}
+        	</TD>
+            <TD style="border: 1px solid white">
+             {{ =datos.ciclos.anio}}
+             </TD>
+        	<TD style="border: 1px solid white"> 
+        	 {{ =datos.carreras.nombre}}  
+             </TD>
+        {{pass}}
+    		 </TR>
+    </TABLE>
+<br>
+<form>
+    <a href="index.html"><input type=button value="Volver" ></a>
+</form>

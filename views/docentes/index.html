@@ -1,0 +1,41 @@
+{{extend 'layout.html'}}
+
+
+
+<table style="border: 1px solid white">
+<td style="border: 1px solid white"><ul>
+    {{for docente in docentes: }}
+    <li>{{=A(docente.nombre,_href=URL(f='ficha',args=[docente.personalid]))}} </li>
+
+    {{pass}}
+</ul> 
+</td>
+</table>
+
+
+
+<br></br>
+<li>
+    <a href="http://127.0.0.1:8000/practica/docentes/finales">Examenes finales</a>
+    
+</li>
+carga las notas finales de los alumnos
+<br></br>
+
+<li>
+    <a  href="http://127.0.0.1:8000/practica/docentes/parciales">Examenes parciales</a>
+</li>
+carga de notas parciales de los alumnos
+<br></br>
+
+<li>
+    <a  href="http://127.0.0.1:8000/practica/docentes/apuntes">Apuntes</a>
+</li>
+carga de los apuntes para los alumnos proporcionado por los docentes
+<br></br>
+
+<li>
+    <a  href="http://127.0.0.1:8000/practica/docentes/recursos">Recursos</a>
+</li>
+realiza reservas de los recursos que utilizara el docente en sus clases
+<br></br>

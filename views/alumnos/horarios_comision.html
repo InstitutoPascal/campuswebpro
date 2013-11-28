@@ -1,0 +1,48 @@
+{{extend 'layout.html'}}
+<h2> Fecha: {{=request.now.date()}}</h2>
+<h2> Alumno/a: {{=alumno.nombre}}
+<h1> <center><u> Horarios de Comision</u> </center></h1>
+    
+
+
+<TABLE style="border: 1px solid white"> 
+    
+    <tr style="border: 1px solid white"> 
+        
+        
+        <td style="border: 1px solid white"> DIAS </td>
+        <td style="border: 1px solid white"> HORARIOS </td>
+        <td style="border: 1px solid white"> MATERIAS </td>
+        <td style="border: 1px solid white"> DOCENTE </td>
+        <td style="border: 1px solid white"> DIVISION </td>
+    </tr>
+    {{for hora in horarios:}}
+         <tr>
+         <td style="border: 1px solid white">      
+             {{=hora.horarios.dia}}              
+         </td>
+         <td style="border: 1px solid white">      
+             {{=hora.horas.desde}}
+             hasta
+             <br>
+             {{=hora.horas.hasta}}
+             hs.                
+         </td>
+         
+         <td style="border: 1px solid white">      
+             {{=hora.materias.nombre}}              
+         </td>
+         <td style="border: 1px solid white">      
+             {{=hora.personal.nombre}}              
+         </td>
+         <td style="border: 1px solid white">      
+             {{=hora.divisiones.descripcion}}              
+         </td>
+    </tr>
+    {{pass}}
+    </TABLE>
+<br>
+<form>
+    <a href="index.html"><input type=button value="Volver" ></a>
+    <a href="horarios.html"><input type=button value="Horario General" ></a>
+</form>

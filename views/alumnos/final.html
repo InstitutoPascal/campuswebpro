@@ -1,0 +1,66 @@
+{{extend 'layout.html'}}
+<h2> Fecha: {{=request.now.date()}}</h2>
+<h2> Alumno/a: {{=alumno.nombre}} </h2>
+<h1> <center><u> Inscripción a Exámenes Finales</u> </center></h1>
+<form method="POST">
+<br>
+    <h3> <font color= "white"> *exámenes finales </font> </h3>
+<br>
+<TABLE class="mitabla" style="border: 1px solid white">
+<TR>
+    <TD style="border: 1px solid white"><center><b> CODIGO </b></center> </TD>
+    <TD style="border: 1px solid white"><center><b> MATERIA </b></center> </TD>
+    <TD style="border: 1px solid white"><center><b> DOCENTE </b></center> </TD>
+    <TD style="border: 1px solid white"><center><b> FECHA </b></center> </TD>
+    <TD style="border: 1px solid white"><center><b> HORA </b></center> </TD>
+    <TD style="border: 1px solid white"> <center><b>ESTADO</b></center> </TD>
+    </TR>    
+<TR>
+{{for f in final:}}
+    <td style="border: 1px solid white">
+    {{=f.examenes.materiaid}}
+    </td>
+    <td style="border: 1px solid white"><input type="checkbox" name="{{="examen_%s" % f.examenes.examenid}}" {{='disabled' if (f.examenes.materiaid in mensajes) else ''}} or {{='disabled' if (f.examenes.materiaid in aprobadas) else ''}} or {{='disabled' if (f.examenes.examenid in inscripciones) else ''}}> 
+    
+    {{=f.materias.nombre}}
+    </td>
+    <td style="border: 1px solid white">
+    {{=f.personal.nombre}}
+    </td>
+    <td style="border: 1px solid white">
+    {{=f.examenes.fecha}}
+    </td>
+    <td style="border: 1px solid white">
+    {{=f.examenes.hora}}
+    </td>
+    <td style="border: 1px solid white" >
+    <font color="yellow"> 
+        {{ ='Ya inscripto, pendiente de revision' if (f.examenes.examenid in inscripciones) else ''}} 
+    </font>
+    	
+    <font color="white"> 
+        {{=msj_aprobada.get(f.examenes.materiaid, "")}}      
+    </font>
+
+    <font color="red"> 
+        {{=mensajes.get(f.examenes.materiaid, "")}}  
+    </font>
+    
+    <font color="white"> 
+        {{='' if (f.examenes.materiaid in mensajes or f.examenes.materiaid in aprobadas or f.examenes.examenid in inscripciones) else 'Disponible'}}
+    </font>
+    
+    </td>
+    </TR>
+    
+    {{pass}}
+    {{pass}}
+</TABLE>
+<br>
+    <a href="index.html"><input type=button value="Volver" ></a>
+    <input type="reset" value="Cancelar">
+    <input type="submit" name="guardar" value="Guardar" > 
+    <input type="reset" value="Cancelar">
+    <a href="constancia_final.html"><input type=button value="Imprimir Constancia" ></a>
+	
+</form>

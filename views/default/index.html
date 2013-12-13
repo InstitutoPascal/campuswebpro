@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <!--meta http-equiv="refresh" content="5;url={{=URL(r=request,c='default',f='main')}}" /-->
+    <title>Instituto Superior Tecnológico Blaise Pascal</title>
+    {{response.files.append(URL(request.application,'static','base.css'))}}
+    {{include 'web2py_ajax.html'}}
+<meta name="google-site-verification" content="vhSpK5N_Om0ePzfhsSRZb83ARKLfbpBBO7gEN7hFA_A" />
+<script type="text/javascript">
+<!--
+/* this adds sfhover class to menu li items to make IE6 work */
+jQuery(document).ready(function(){
+    jQuery('li.web2py-menu-expand').hover(
+        function () {
+            jQuery(this).addClass('sfhover');
+        },
+        function () {
+            jQuery(this).removeClass('sfhover');
+        }
+    );
+});
+//-->
+</script> 
+
+    <style type="text/css">
+       body {
+              font-family: Dejavu, Verdana, helvetica;
+              font-size: 12px; 
+              background-color: #243080; color: #FFFFFF; 
+              text-align:center;
+       }
+       h1 ,h2 ,h3, h4 { color: #D7D7D7; }
+       a { text-decoration: none; color: #FFFFFF;}
+       img { border:0;}
+       
+       #telon {
+            background-image: url({{=URL(c='static', f='telon_isbp.jpg')}}); 
+            background-repeat: no-repeat;
+            width:696px;
+            height:547px;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:auto;
+            margin-bottom:auto;
+            text-align:center;
+            align:center;
+            min-width: 696px;
+            position: relative;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div id="telon">
+        <div style="position: absolute; left:14; top: 10px; width: 696; text-align: center;">
+            {{=MENU(response.menu,_class="web2py-menu web2py-menu-horizontal")}}
+        </div>        
+        <div style="display:none">
+            <h1><a href="/welcome/default/main">Instituto Superior Tecnológico Blaise Pascal</a></h1>
+            <p>Formando profesionales con profunda vocación en Ciencia, Salud y Tecnología.</p> 
+        </div>
+         
+        <div style="position: absolute; left:0; top: 240px; width: 696; text-align: center;">
+
+            <h3 style="text-align: center;">Dirección General de Cultura y Educación de Gestión Privada</h3>
+            <h3 style="text-align: center;">DIPREGEP 6131</h3> 
+            <h3 style="text-align: center;">Colegio Universitario - Convenio con Universidades</h3> 
+                         
+            <h3 style="text-align: center;">CARRERAS TERCIARIAS OFICIALES</h3> 
+                        
+            <p style="text-align: center;">Puerto Argentino 4238 - González Catan (C.P.1759) - Buenos Aires - Argentina</p> 
+                         
+            <p style="text-align: center;">Teléfono 02202-423336/427725   <a href="mailto:info@institutopascal.edu.ar">info@institutopascal.edu.ar</a></p>     
+       
+        </div> 
+        
+        <span style="position: absolute; top: 519px; left:0; width: 696; text-align: center;">
+            {{=T("Language")}}&nbsp;<a href="?lang=es">Español</a>&nbsp;<a href="?lang=en">English</a> -
+            {{=T('Copyright')}} &copy; 2013 - 
+            {{=T('Powered by')}} <a class="menu_foot" href="http://www.web2py.com.ar"><img alt="web2py" src="{{=URL(r=request,c='static',f='web2py_logo_small.png')}}"></a>
+        <span/>
+    
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-15712735-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+  </body>
+</html>

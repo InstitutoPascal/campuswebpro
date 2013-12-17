@@ -1,0 +1,62 @@
+{{extend 'layout.html'}}
+<h2> Fecha: {{=request.now.date()}}</h2>
+<h2> Alumno/a: {{=alumno.nombre}}
+<h1> <center> Inscripcion a Comisión</center></h1>
+
+<form method="POST">
+<br>
+  
+<div id= "div_centrado">
+<TABLE id= "tabla">
+<TR>
+    <TD id= "head"> CODIGO  </TD>
+    <TD id= "head">MATERIA  </TD>
+    <TD id= "head"> DOCENTE </TD>
+    <TD id= "head"> CONDICIÓN  </TD>
+    <TD id= "head"> ESTADO </TD>
+<TR>
+    
+{{for c in comision:}}
+    
+    <td id= "td">
+    {{=c.materias.materiaid}}
+    </td>
+    <td id= "td"><input type="checkbox" name="{{="comision_%s" % c.comisiones.comisionid}}" {{='disabled' if (c.comisiones.comisionid in inscripciones) else ''}} or {{='disabled' if (c.comisiones.materiaid in aprobada) else ''}} > 
+    
+    {{=c.materias.nombre}}
+    </td>
+    <td id= "td">
+    {{=c.personal.nombre}}
+    </td>
+    <td id= "td">
+    <input type="radio" name="condicion" value="Regular" 
+    {{='disabled' if (c.comisiones.comisionid in inscripciones) else ''}} or {{='disabled' if (c.comisiones.materiaid in aprobada) else ''}} > Regular
+	<br>
+	<input type="radio" name="condicion" value="Libre" 
+	{{='disabled' if (c.comisiones.comisionid in inscripciones) else ''}} or {{='disabled' if (c.comisiones.materiaid in aprobada) else ''}} > Libre
+
+    </td>
+    <td id= "td">
+    <font color="yellow"> 
+        {{='Ya inscripto, pendiente de revision' if (c.comisiones.comisionid in inscripciones) else ''}}
+    </font>
+       
+    <font color="red"> 
+        {{='Comision Aprobado' if (c.comisiones.materiaid in aprobada) else ''}}  
+    </font>
+    
+    </td>
+    </TR>
+    
+    {{pass}}
+    {{pass}}
+</TABLE>
+    </div>
+<br>
+    <center>
+    <a href="index.html"><input type=button value="Volver" ></a>
+    <input type="submit" name="guardar" value="Guardar" > 
+    <input type="reset" value="Cancelar">
+    <a href="constancia_comision.html"><input type=button value="Imprimir Constancia" ></a>
+    </center>
+</form>

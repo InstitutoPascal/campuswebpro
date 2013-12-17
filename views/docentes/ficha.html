@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+<table style="border: 1px solid white">
+
+<td  style="border: 1px solid white">
+<center>{{=IMG(_src=URL(c='default',f='download',args=fila.foto))}}</center>
+<h1>Nombre: {{=fila.nombre}}</h1>
+<h1>Facebook: {{=fila.facebook}}</h1>
+<h1> E_mail: {{=fila.E_mail}} </h1>
+<br>
+<BR>
+
+    <b><u>Tomar inasistencias:</u></b>
+<br>
+<br>
+{{for comision in comisiones:}}
+
+    <li> <a href="{{=URL(f="alumnoXcomision", args=[comision.comisionid])}}">{{=comision.nombre}}</li>
+{{pass}}

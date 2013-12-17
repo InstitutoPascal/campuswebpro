@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+Fecha: {{=request.now.date()}}
+<br>
+<FORM ACTION="">
+
+<TABLE style="border: 1px solid white">
+    
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B><center>DNI</center></B></td>
+    <td style="border: 1px solid white"><B><center>Alumno</B></td>
+    <td style="border: 1px solid white"><B><center>1er Cuatrimestre </B></td>
+    <td style="border: 1px solid white"><B><center>2do Cuatrimestre</B></td>
+    <td style="border: 1px solid white"><B><center>Recuperatorio 1 </B></td>
+    <td style="border: 1px solid white"><B><center>Recuperatorio 2</B></td>
+    <td style="border: 1px solid white"><B><center>Condicion</B></td>
+    
+    </tr>
+    {{for alumno in alumnos: }}
+
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><center>{{=alumno.dni}}</center></B></td>
+    <td style="border: 1px solid white"><center>{{=alumno.nombre}}</B></td>
+    <td style="border: 1px solid white"><center> <INPUT type="text" NAME="NOTA" size="1" MAXLENGTH="2"> </td>
+    <td style="border: 1px solid white"><center><INPUT type="text" NAME="NOTA" size="1" MAXLENGTH="2"></center> </td>
+    <td style="border: 1px solid white"><center><INPUT type="text" NAME="NOTA" size="1" MAXLENGTH="2"> </td>
+    <td style="border: 1px solid white"><center><INPUT type="text" NAME="NOTA" size="1" MAXLENGTH="2"> </td>
+    <td style="border: 1px solid white"><center><SELECT name="condicion" > <option> REGULAR</option><option>LIBRE</option></td>
+    
+    </tr>
+    {{pass}}
+    
+    
+    </tr>
+</table>
+    <INPUT type="submit" name="GRABAR" value="GUARDAR">
+</FORM>

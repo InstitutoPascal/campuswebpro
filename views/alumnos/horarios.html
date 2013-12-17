@@ -1,0 +1,51 @@
+{{extend 'layout.html'}}
+<h1> <center><u>HORARIOS GENERALES</u> </center></h1>
+
+{{for divisionid in (1, 2, 3): }}
+<div id= "div_centrado">
+<TABLE id= "tabla"> 
+    
+    <tr> 
+        
+        <td id= "head"> HORAS </td>
+        <td id= "head"> LUNES </td>
+        <td id= "head"> MARTES </td>
+        <td id= "head"> MIERCOLES </td>
+        <td id= "head"> JUEVES </td>
+        <td id= "head"> VIERNES </td>
+    </tr>
+        {{for hora in ['1','2','3','4']:}}
+         <tr>
+         <td id= "td">      
+             {{=horas[hora].desde}}
+             hasta
+             <br>
+             {{=horas[hora].hasta}}
+             hs.                
+         </td>
+         <br>
+        {{for dia in ['lunes','martes','miercoles','jueves','viernes']:}}
+    		<td id= "td"> 
+                
+			{{f=horario.get(dia, {}).get(hora, None).get(divisionid)}}
+                
+			{{if f:}}
+                
+                {{=f.materias.nombre}} <br>
+				{{=f.personal.nombre}} 
+                
+        	{{pass}}
+            </td>
+    	{{pass}}
+    </tr>
+   {{pass}}
+    
+{{pass}}
+    
+    <br>
+    <br>
+    </TABLE>
+<br>
+<form>
+    <center> <a href="index.html"><input type=button value="Volver" ></a> </center>
+</form>

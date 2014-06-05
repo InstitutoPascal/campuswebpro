@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+<h1> <center><u> PERFIL</u> </center></h1>
+
+<center>{{=IMG(_src=URL(c='default',f='download',args=alumno.foto))}}</center>
+<h2><u> Alumno/a:</u> {{=alumno.nombre}}</h2> 
+<h2><u> Fecha de Nacimiento:</u> {{=alumno.fechanacimiento.strftime("%d/%m/%Y")}} </h2> 
+<h2><u> Estado Civil:</u> {{=alumno.estadocivil}} </h2>
+<h2><u> Nacionalidad:</u> {{=alumno.nacionalidad}}  </h2>
+<h2><u> Localidad:</u> {{=alumno.localidad}}</h2>
+<h2><u> Email:</u> {{=alumno.email1}}</h2> 
+<h2><u> Ingreso:</u> {{=alumno.ingreso.strftime("%d/%m/%Y")}} </h2>
+
+<br>
+{{if alumno.alumnoid not in inscripcion:}}
+
+<div id= "div_centrado">
+
+</div>
+			{{pass}}
+
+<br>
+<form>
+    <center><a href="index.html"><input type=button value="Volver" ></a></center>
+</form>

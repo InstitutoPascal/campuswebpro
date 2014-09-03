@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+<h1>Seleccion De Tramites Del Instituto Superior Blaise Pascal</h1> 
+<html>
+    <p><b> Alumno : {{=alumno.nombre}} 
+    Dni : {{=alumno.dni}}
+    Carrera : Analisis de Sistemas </b></p> 
+    
+<select>
+	<option> Constancia de alumno regular </option>
+	<option> Reincorporación de alumno </option>
+	<option> Certificados de materias aprobadas </option>
+	<option> Titulo en tramite </option>
+</select>
+
+<p><b> Comentarios: </b></p> 
+<form name=myform>
+<textarea name=mytextarea  cols=45 rows=8>
+</textarea>
+</form>
+<input type="button" name=myButton value="Enviar">
+</html>

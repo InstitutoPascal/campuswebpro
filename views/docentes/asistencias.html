@@ -1,0 +1,38 @@
+{{extend 'layout.html'}} 
+<FORM method="POST"> 
+    <center>
+        <h1><B>Práctica Profesional - Asistencias</B></h1>
+        FECHA:<INPUT type="text" Name="fecha" size="11" VALUE={{=request.now.date().strftime('%d/%m/%Y')}}> 
+    <br><br>
+    <TABLE style="border: 1px solid white">
+        <tr style="border: 1px solid white">
+            <td style="border: 1px solid white"><B><center>Alumno</center></B></td>
+            <td style="border: 1px solid white"><B><center>Presente</center></B></td>
+            <td style="border: 1px solid white"><B><center>Inasistencia</center></B>    </td>       
+        </tr>
+        {{for fila in filas:}}
+        {{alumno=fila.alumnos}}
+        <tr style="border: 1px solid white">
+            <td style="border: 1px solid white">{{=alumno.nombre}} </td>
+            <td style="border: 1px solid white">
+                <center>
+                    <INPUT type="checkbox" NAME="{{="check_%s" % alumno.alumnoid}}">
+                </center>
+            </td>
+            <td style="border: 1px solid white"><center>
+                <select NAME="{{="tipo_%s" % alumno.alumnoid}}">
+                    {{for tipoid, desc in tipos_map.items():}}
+                    <option value="{{=tipoid}}" {{="selected" if cants_map[tipoid]==1 else''}}>{{=desc}}</option>
+            {{pass}}
+    	    {{pass}}
+                </select>
+            </center>
+            </td>
+        </tr>
+    </TABLE>
+    <br>
+<INPUT type="submit" value="CONFIRMAR" name= "confirmar">
+<a href="http://127.0.0.1:8000/practicarepo/docentes/index.html"><input type=button value="VOLVER" ></a>
+</center>
+</FORM>
+<br>

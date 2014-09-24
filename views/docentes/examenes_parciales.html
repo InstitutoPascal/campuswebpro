@@ -1,0 +1,35 @@
+{{extend 'layout.html'}}
+<FORM method="POST">
+	<center>
+	<br>
+	<div id="div_centrado">
+        <h2>PRÁCTICA PROFESIONAL</h2> 
+        <b>FECHA:<INPUT type="text" Name="fecha" size="11" VALUE= {{=request.now.date().strftime('%d/%m/%Y')}}> 
+            PERIODO:</b>
+	    <select NAME="condicion">
+		    <option value="1">1er CUATRIMESTRE</option>
+		    <option value="2">2do CUATRIMESTRE</option>
+   		    <option value="1r">1er RECUPERATORIO</option>
+   		    <option value="2r">2do RECUPERATORIO</option>
+	    </select>
+        <h2>CALIFICACIONES</h2>
+<TABLE id= "tabla" >
+	<tr>
+		<td id= "head"><B><center>DNI</center> </B></td>
+		<td id= "head"><B><center>ALUMNO</center></B></td>
+        <td id= "head"><B><center>NOTA</center></B></td>
+    </tr>
+	{{for fila in filas:}}
+	<tr>
+		<td id= "head"><center>{{=fila.alumnoid}}</center></td>
+		<td id= "head"><center>{{=fila.nombre}}</center></td>
+		<td id= "head"><center><INPUT type="text" NAME="NOTA_{{=fila.alumnoid}}" size="2" MAXLENGTH="2"></center></td>
+	</tr>
+	{{pass}}
+</TABLE>
+<br>
+<INPUT type="submit" name="GRABAR" value="CONFIRMAR">
+<a href="listaparciales.html"><input type=button value="VOLVER" ></a>
+</center></div>
+</FORM>
+<br>

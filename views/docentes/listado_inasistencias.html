@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+<h1> <center><u> Listado Inasistencia</u> </center></h1>
+<FORM method="POST"> 
+    <center>
+        FECHA:<INPUT type="text" Name="fecha" size="11" VALUE={{=request.now.date().strftime('%d/%m/%Y')}}> 
+        <br><br>
+    <TABLE id="table">
+        <tr>
+            <td id= "head"><B><center>Alumno</center></B></td>
+            <td  id= "head"><B><center>Días Hábiles</center></B></td>
+            <td id= "head"><B><center>Presentes</center></B></td>  
+            <td id= "head"><B><center>Ausentes</center></B></td>  
+            <td id= "head"><B><center>Retiros Anticipados</center></B></td>      
+            <td id= "head"><B><center>PORCENTAJE DE ASISTENCIA</center></B></td>
+            <td id= "head"><B><center>CONDICION OBTENIDA</center></B></td>
+        </tr>
+		 {{for fila in alumnos:}}
+        
+        <tr>
+        <td id= "head"><center>{{=fila.nombre}}</center> </td>
+        <td id= "head"><center>{{=faltas_1p_map.get(fila.alumnoid, "")}}</center> </td>
+        <td id= "head"><center>{{=faltas_2p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head"><center>{{=faltas_3p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head"><center>{{=faltas_4p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head"><center>{{=porcentaje_map.get(fila.alumnoid, "")}} % </center></td>
+        <td id= "head">{{=condicion_map.get(fila.alumnoid, "")}}<center>
+            
+        </center></td>
+    </tr> 
+    {{pass}}
+        
+    </TABLE>        
+	<br>
+        <input type=button value="VOLVER" >
+    </center>
+</FORM>
+<br>

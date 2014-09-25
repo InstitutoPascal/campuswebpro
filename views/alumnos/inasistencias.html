@@ -1,0 +1,45 @@
+{{extend 'layout.html'}}
+
+
+<td class="expandable column2">
+            <div class="flash" style="display: none;"></div>
+            <div class="body">
+            
+
+
+    
+<div id="div_centrado">
+<table id="tabla">
+	<tbody><tr>
+	<td id="head"> MATERIAS</td>
+	<td id="head"> CANTIDAD</td>
+	<td id="head"> DESCRIPCIÓN</td>
+	<td id="head"> FECHA </td>
+    </tr>
+    {{ f=falta}}
+        {{for falta in f:}}
+    <tr>
+	<td id="head">{{ =falta.comisiones.nombre}}</td>
+	<td id="head">{{ =falta.faltas.cantidad}}</td>
+	<td id="head">{{ =falta.inasistencias.descripcion}}</td>
+        <td id="head">{{ =falta.faltas.fecha.strftime("%d/%m/%Y")}}</td>
+    </tr>
+        {{pass}}
+    		 <tr>
+    		 <td id="td">
+             TOTAL
+             </td>
+    		 <td id="td">
+                 {{ =total['suma']}}
+             </td>
+    </tr>
+
+    </tbody></table>
+</div>
+    <br>
+<form>
+    <center><a href="index.html"><input type="button" value="Volver"></a></center>
+</form>
+
+            </div>
+          </td>

@@ -1,0 +1,337 @@
+{{extend 'layout.html'}}
+En este sitio se describen los horarios de las materias con sus correspondientes horarios
+<h1>Materias de Análisis de sistemas </h1>
+
+<br>
+<tr>      
+<FORM ACTION="">
+
+Duracion de la carrera: 3 años
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Primer año</B></td>
+    <td style="border: 1px solid white"><B>Día</B></td>
+    <td style="border: 1px solid white"><B>Horarios</B></td>
+    <td style="border: 1px solid white"><B>Docente</B></td>
+    
+    </tr>
+    {{for fila in filas:}}
+     
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">{{=fila.materias.nombre}}</td>
+    <td style="border: 1px solid white"><B>{{=fila.horarios.dia}}</B></td>
+    <td style="border: 1px solid white"><B>{{=fila.horas.desde}} a {{=fila.horas.hasta}}</B></td>          
+    <td style="border: 1px solid white">{{=fila.personal.nombre}}</td>
+    </tr>
+    {{pass}}
+        
+        
+       
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Analisis matematico</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Jose Gonzalez  </td>
+     </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Ingles tecnico</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>   
+        <td style="border: 1px solid white">Roseli </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Administracion de las organizaciones</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Claudia Vargas  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Programacion</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Hector Amarilla  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Metodologia de la investigacion</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Luz Medina  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Introduccion a los sistemas operativos</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Mariano Reingart  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Arquitectura del computador</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Sosa  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">EDI</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Angel Bravo  </td>
+ </tr>
+ </TABLE>
+ <h1></h1>
+
+{{=BEAUTIFY(response._vars)}}
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Segundo año</B></td>
+    <td style="border: 1px solid white"><B>Día</B></td>
+        <td style="border: 1px solid white"><B>Horarios</B></td>
+    <td style="border: 1px solid white"><B>Docente</B></td> 
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Probabilidad y estadistica</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Jose Gonzalez  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Analisis matematico II </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Jose Gonzalez  </td>
+     </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Ingles tecnico II </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Roseli </td>  
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Sistemas de informacion </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Luz Medina  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Programacion II </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Hector Amarilla  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Sistemas operativos </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Mariano Riengart  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Base de datos </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Mariano Riengart  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">EDI II </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td>
+        <td style="border: 1px solid white">Angel Bravo </td>
+    </tr>
+    
+</TABLE>
+
+<h1></h1>
+
+{{=BEAUTIFY(response._vars)}}
+
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Tercer año</B></td>
+    <td style="border: 1px solid white"><B>Día</B></td>
+        <td style="border: 1px solid white"><B>Horarios</B></td>
+            <td style="border: 1px solid white"><B>Docente</B></td>
+           
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Investigacion operativa </td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Claudia Vargas  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Economia Empresarial</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Claudia Vargas  </td>
+     </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Teleinformatica</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Angel Bravo  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Sistemas de Información II</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Luz Medina  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Practica Profesional</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Reingart/Medina  </td>
+    </tr>
+    
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">EDI III</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Aguirre  </td>
+    </tr>      
+    </TABLE>
+<h1>Carreras de Salud</h1>
+<h1>Enfermeria</h1>
+
+{{=BEAUTIFY(response._vars)}}
+Duracion de la carrera: 3 años
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Primer año</B></td>
+    <td style="border: 1px solid white"><B>Día</B></td>
+    <td style="border: 1px solid white"><B>Horarios</B></td>
+        <td style="border: 1px solid white"><B>Docente</B></td>
+    </tr>   
+     <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Salud publica	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Schreiner </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Biología humana	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Rodriguez </td>
+    </tr>
+ 
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Fundamentos del cuidado	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Santillan </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Cuidados de la salud centrados en la comunidad y la familia	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Santillan </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Condicion y Medio Ambiente del Trabajo	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+         <td style="border: 1px solid white">Nocheretti  </td>
+    </tr>    
+</TABLE>
+<h1></h1>
+   <TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Segundo año</B></td>
+    <td style="border: 1px solid white"><B>Día</B></td>
+   <td style="border: 1px solid white"><B>Horarios</B></td>
+        <td style="border: 1px solid white"><B>Docente</B></td>
+    </tr>
+     <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermeria en Emergencias y Catrastofes</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Nocheretti  </td>
+    </tr>
+    
+     <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Farmacologia	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Melgarejo </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Salud pública II	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Flores  </td>
+    </tr>
+ <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Salud Publica II	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Flores  </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermería materno infantil	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> >
+        <td style="border: 1px solid white">Vera  </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermeria del Adulto y del Adulto mayor I	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Schreiner  </td>
+    </tr>    
+</TABLE>
+<h1></h1>
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Tercer año</B></td>
+    <td style="border: 1px solid white"><B>Dìa</B></td>
+        <td style="border: 1px solid white"><B>Horarios</B></td>
+        <td style="border: 1px solid white"><B>Docente</B></td>
+        
+    </tr>
+     <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermería del Adulto y del Adulto Mayor</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Vera </td>
+    </tr>
+        <tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermería del Adulto y del Adulto Mayor	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Vera  </td>
+    </tr>
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Enfermeria comunitaria y practica educativa en salud	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Schreiner </td>
+    </tr>
+ 
+<tr style="border: 1px solid white">
+    <td style="border: 1px solid white">Organizacion y Gestion de los Servicios de Enfermeria	</td>
+    <td id= "head"><center><INPUT type="text" NAME="dia" size="8" MAXLENGTH="10"></center></td> 
+        <td id= "head"><center><INPUT type="text" NAME="horario" size="8" MAXLENGTH="10"></center></td> 
+        <td style="border: 1px solid white">Vera </td>
+ </tr>
+</TABLE>   
+    <br><br><br><br>
+<tr>
+    <INPUT type="submit" name="GRABAR" value="ACEPTAR">
+    <a href="menu.html"><input type=button value="VOLVER" ></a>
+</tr>

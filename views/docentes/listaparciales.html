@@ -1,0 +1,38 @@
+{{extend 'layout.html'}}
+<p>
+<FORM method="POST">
+	<center>
+        <h1><B>Listado de {{for materia in materias:}}{{=materia.nombre}}{{pass}}</B></h1>
+<TABLE id= "tabla" >
+	    <tr>
+    <td id= "head"><B><center>DNI</center></B></td>
+    <td id= "head"><center>ALUMNO</center></td>
+    <td id= "head"><center>1ER CUATRIMESTRE </center></td>
+    <td id= "head"><center>2DO CUATRIMESTRE</center></td>
+    <td id= "head"><center>1ER RECUPERATORIO </center></td>
+    <td id= "head"><center>2DO RECUPERATORIO</center></td>
+    <td id= "head"><center>CONDICION</center></td>
+    
+    </tr>
+   
+    {{for fila in alumnos:}}
+
+    <tr>
+        <td id= "head"><center>{{=fila.alumnoid}}</center></td>
+        <td id= "head"><center>{{=fila.nombre}}</center> </td>
+        <td id= "head"><center>{{=notas_1p_map.get(fila.alumnoid, "")}}</center> </td>
+        <td id= "head"><center>{{=notas_2p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head"><center>{{=notas_3p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head"><center>{{=notas_4p_map.get(fila.alumnoid, "")}}</center></td>
+        <td id= "head">{{=condicion_map.get(fila.alumnoid, "")}}<center>
+            
+        </center></td>
+    </tr> 
+    {{pass}}
+</TABLE>
+<br>
+	<a href="../index.html"><input type=button value="Volver" ></a>
+   
+</center>
+</FORM>
+<br>

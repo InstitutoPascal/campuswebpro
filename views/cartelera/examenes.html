@@ -1,0 +1,36 @@
+{{extend 'layout.html'}}
+<h1><center>TECNICATURA SUPERIOR EN ANÁLISIS DE SISTEMAS - Diciembre 2014</center></h1>
+<div id= "div_centrado">
+<br>
+<tr>      
+<FORM ACTION="">
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B> Código  </B></td>
+    <td style="border: 1px solid white"><B>Materia  </B></td>
+    <td style="border: 1px solid white"><B>Curso </B></td>
+        <td style="border: 1px solid white"><B>Año </B></td>
+        <td style="border: 1px solid white"><B>1er Llamado</B></td>
+        <td style="border: 1px solid white"><B>Horario</B></td>
+    <td style="border: 1px solid white"><B>Correlativa</B></td>
+    <td style="border: 1px solid white"><B>Docentes  </B></td>
+    
+    </tr>
+    {{for fila in filas:}}
+    
+    <tr style="border: 1px solid white">
+        <td style="border: 1px solid white">{{=fila.materias.codigo}}</td>
+        <td style="border: 1px solid white">{{=fila.materias.nombre}}</td>
+    <td style="border: 1px solid white">Anual </td>
+        <td style="border: 1px solid white">{{=fila.cursos.nombre}}</td>
+        <td style="border: 1px solid white"><B>{{=fila.examenes.fecha}}</B></td>
+        <td style="border: 1px solid white"><B>{{=fila.examenes.hora}}</B></td> 
+        <td style="border: 1px solid white">{{=correla_map.get(fila.materias.codigo, "")}}</td>
+    <td style="border: 1px solid white">{{=fila.personal.nombre}}</td>
+    </tr>
+    {{pass}}
+</TABLE>
+<br>
+<a href="menu.html"><input type=button value="VOLVER" ></a>
+</FORM>
+</div>

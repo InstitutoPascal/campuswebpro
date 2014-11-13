@@ -1,0 +1,54 @@
+{{extend 'layout.html'}}
+<h1>Novedades</h1>
+{{=BEAUTIFY(response._vars)}}
+<div id= "div_centrado">
+
+Fecha: {{=request.now.date()}}
+<br>
+<tr>
+    <td id= "head"><B>Materia:</B></td>
+      <td id= "head"><B>Practica Profesional</B></td>
+     </tr>
+<FORM ACTION="">
+NOVEDADES
+<TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B><center>Materia    </B></td>
+    <td style="border: 1px solid white"><B><center>Curso    </B></td>
+        <td style="border: 1px solid white"><B>Mensaje</B></td>
+    </tr>
+    
+    
+    
+      <td style="border: 1px solid white"><B>Practica Profesional</B></td>
+       <td style="border: 1px solid white"><B>3ª</B></td>
+       <td style="border: 1px solid white"><B> Hoy no hay clase por jornada docente</B></td>
+       
+      
+      <tr style="border: 1px solid white">
+    </tr>
+       
+       
+       <td id= "head"><center><INPUT type="text" NAME="Materia" size="16" MAXLENGTH="27"></center></td>
+       <td id= "head"><center><INPUT type="text" NAME="Curso" size="5" MAXLENGTH="10"></center></td>
+             <td id= "head"><center><INPUT type="text" NAME="Mensaje" size="8" MAXLENGTH="10"></center></td> 
+      <tr style="border: 1px solid white">
+    </tr>
+    
+    
+       <td id= "head"><center><INPUT type="text" NAME="Materia" size="16" MAXLENGTH="27"></center></td>
+       <td id= "head"><center><INPUT type="text" NAME="Curso" size="5" MAXLENGTH="10"></center></td>
+       <td id= "head"><center><INPUT type="text" NAME="Mensaje" size="8" MAXLENGTH="10"></center></td>
+        
+      <tr style="border: 1px solid white">
+    </tr>
+    </td>
+	</tr>
+</table>
+    <br><br><br><br>
+<tr>
+    <INPUT type="submit" name="GRABAR" value="ACEPTAR">
+    <a href="menu.html"><input type=button value="VOLVER" ></a>
+</tr>
+</FORM>
+</div>

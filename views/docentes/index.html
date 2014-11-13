@@ -1,0 +1,49 @@
+{{extend 'layout.html'}} 
+<center>
+    <h3><B><u>MENÚ DOCENTES</u></B></h3>Prof. {{for docente in docentes:}}{{=docente.nombre}} {{pass}}
+                    <h2><a href="{{=URL(f="ficha", args=docente.id)}}">
+                    - Ficha Personal
+                    </a></h2>
+<BR>
+<FORM method="POST">
+    <TABLE id= "tabla">
+        <tr id= "head">
+            <td id="head"><B><center>Materias</center></B></td>
+            <td><B><center>Asistencia</center></B></td>
+            <td><B><center>Parciales</center></B></td>
+            <td><B><center>Acta Volante</center></B></td>
+        </tr>
+    {{for comision in comisiones:}}
+        <tr id= "head">
+            <td id= "head"><B><center>{{=comision.nombre}}</center></B></td>
+            <td>
+               	<a href="{{=URL(f="listado_inasistencias", args=comision.comisionid)}}">
+                    <input type=button value="Listar">
+                </a>
+                <a href="{{=URL(f="asistencias", args=comision.comisionid)}}">
+                    <input type=button value="Cargar">
+                </a>
+            </td>
+            <td>
+                <a href="{{=URL(f="listaparciales", args=comision.comisionid)}}">
+                    <input type=button value="Listar">
+                </a>
+                <a href="{{=URL(f="examenes_parciales", args=comision.comisionid)}}">
+                    <input type=button value="Cargar">
+                </a>
+            </td>
+            <td>
+                <a href="{{=URL(f="listarfinales", args=comision.comisionid)}}">
+                    <input type=button value="Listar">
+                </a>
+                <a href="{{=URL(f="finales", args=comision.comisionid)}}">
+                    <input type=button value="Cargar">
+                </a>
+            </td>
+        </tr>
+{{pass}}
+</TABLE>
+</FORM>
+<br>
+<br>
+</center>

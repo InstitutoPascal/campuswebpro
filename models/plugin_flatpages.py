@@ -18,7 +18,7 @@ db.define_table('plugin_flatpage',
     Field('body', 'text'),
     Field('created_on', 'datetime', default=request.now, required=False),
     Field('created_by', db.auth_user, default=auth.user and auth.user.id or None, required=False),
-)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 def plugin_flatpage():

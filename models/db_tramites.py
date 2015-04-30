@@ -7,7 +7,7 @@ db.define_table('tramites',
     Field('descripcion', type='string', default=""),
     Field('arancelado', type='boolean', default=False),
     format= "%(tramiteid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table('ubicaciones',
@@ -16,7 +16,7 @@ db.define_table('ubicaciones',
     Field('telefono', type='string', default=""),
     Field('email', type='string', default=""),
     format= "%(ubicacionid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
     
 db.define_table('estados',
@@ -24,7 +24,7 @@ db.define_table('estados',
     Field('descripcion', type='string', default=""),
     Field('activo', type='boolean', default=False),
     format= "%(estadoid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
     
 db.define_table('expedientes',
@@ -34,7 +34,7 @@ db.define_table('expedientes',
     Field('estadoid', db.estados),
     Field("mensaje", "text"),
     format= "%(expedienteid)s [%(mensaje)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table("seguimientos",
@@ -45,4 +45,4 @@ db.define_table("seguimientos",
     Field('fecha', type='date', length=200,label=T('Fecha')),
     Field("comentario", "text"),
     format= "%(seguimientoid)s [%(comentario)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)

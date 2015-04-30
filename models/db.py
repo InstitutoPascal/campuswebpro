@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 ###########################################################
 DESARROLLO = False
 if request.vars.lang: session.lang=request.vars.lang
-T.force(session.lang or "es")
+T.force("es")
 
 T.current_languages=['es','es-ar','es-es']
 ###################################################
@@ -37,7 +37,7 @@ else:
 from gluon.tools import *
 auth=Auth(globals(),db)                      # authentication/authorization
 auth.settings.hmac_key='sha512:b13de948-def0-4fd4-baf6-bef3f83b5d88'
-auth.define_tables()                         # creates all needed tables
+auth.define_tables(migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)                         # creates all needed tables
 crud=Crud(globals(),db)                      # for CRUD helpers using auth
 service=Service(globals())                   # for json, xml, jsonrpc, xmlrpc, amfrpc
 
@@ -60,11 +60,12 @@ auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.messages.verify_email = 'Presione en el enlace http://'+request.env.http_host+URL(r=request,c='default',f='user',args=['verify_email'])+'/%(key)s para verificar su cuenta de correo electrónico.'
 
+#auth.messages.Confirm_Password = 'Verificar Contraseña'
 auth.messages.verify_password = 'Verificar Contraseña'
 auth.messages.label_remember_me = 'Recordarme (30 dias)'
 auth.messages.verify_password_comment = 'Ingrese su contraseña nuevamente'
 auth.messages.register_button = 'Registrarse'
-auth.messages.login_button = 'Loguearse'
+auth.messages.login_button = 'Iniciar seción'
 
 auth.settings.reset_password_requires_verification = True
 auth.messages.reset_password = 'Presione en el enlace http://'+request.env.http_host+URL(r=request,c='default',f='user',args=['reset_password'])+'/%(key)s para reestablecer su contraseña'

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 ##db = DAL("postgres://reingart:clave@localhost:5432/terciario", pool_size=10)
 
-migrate = True
-
 db.define_table('alumnos',
     Field('alumnoid', type='id'),
     Field('nombre', type='string', length=200),
@@ -23,7 +21,7 @@ db.define_table('alumnos',
     Field('foto', type='upload', length=50),
     Field('user_id', db.auth_user, readable= False, writable= False),
     format= "%(alumnoid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.alumnos.fechanacimiento.requires=IS_DATE('%d-%m-%y')
 db.alumnos.ingreso.requires=IS_DATE('%d-%m-%y')
@@ -74,25 +72,25 @@ db.define_table('cursos',
     Field('division', type='string', length=3),
     Field('orden', type='integer', default=0),
     format= "%(cursoid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('revistas',
     Field('revistaid', type='id'),
     Field('nombre', type='string', length=50),
     format= "%(revistaid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('condiciones',
     Field('condicionid', type='id'),
     Field('detalle', type='string'),
     format= "%(condicionid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('cargos',
     Field('cargoid', type='id'),
     Field('descripcion', type='string', length=50),
     format= "%(cargoid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 #db.define_table('manuales',
 #    Field('manualid', type='id'),
@@ -110,17 +108,17 @@ db.define_table('recursos',
     Field('estado', type='boolean'),
     Field('cantidad', type='integer'),
     #Field('fecha_de_reserva', type='date'),
-
+    
 
     format= "%(recursoid)s [%(recurso)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
             
 db.define_table('secciones',
     Field('seccionid', type='id'),
     Field('descripcion', type='string', length=50),
     format= "%(seccionid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('personal',
     Field('personalid', type='id'),
@@ -143,10 +141,11 @@ db.define_table('personal',
     Field('foto', type='upload', length=50),
     Field('cargoid', db.cargos),
     Field('user_id', db.auth_user, readable= False, writable= False),
+    
 
 ##    Field('seccionid', db.secciones),
     format= "%(personalid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('niveles',
     Field('nivelid', type='id'),
@@ -155,7 +154,7 @@ db.define_table('niveles',
     Field('tipo', type='integer', default=0),
     Field('personalid', db.personal),
     format= "%(nivelid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('apuntes',
     Field('apunteid', type='id'),
@@ -166,13 +165,13 @@ db.define_table('apuntes',
     Field('fecha', type='date', default=0),
 
     format= "%(apunteid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('carreras',
     Field('carreraid', type='id'),
     Field('nombre', type='string', length=250),
     format= "%(carreraid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('planesestudio',
     Field('planestudioid', type='id'),
@@ -182,7 +181,7 @@ db.define_table('planesestudio',
     Field('desde', type='date'),
     Field('hasta', type='date'),
     format= "%(planestudioid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('ciclos',
     Field('cicloid', type='id'),
@@ -192,7 +191,7 @@ db.define_table('ciclos',
     Field('desde', type='date'),
     Field('hasta', type='date'),
     format= "%(cicloid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.ciclos.desde.requires=IS_DATE('%d-%m-%y')
@@ -211,7 +210,7 @@ db.define_table('catedras',
     Field('minutos', type='integer', default=0),
     Field('nivelid', db.niveles),
     format= "%(catedraid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('materias',
     Field('materiaid', type='id'),
@@ -227,7 +226,7 @@ db.define_table('materias',
     Field('requerida', type='boolean', default=False),
     Field('profesor'),
     format= "%(materiaid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 
@@ -242,7 +241,7 @@ db.define_table('divisiones',
     Field('turno', type='string', length=1),
     Field('anio', type='integer'),
     format= "%(divisionid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('asignaturas',
     Field('asignaturaid', type='id'),
@@ -261,7 +260,7 @@ db.define_table('asignaturas',
     Field('faltasrecursa', type='integer', default=0),
     Field('cicloid', db.ciclos),
     format= "%(asignaturaid)s [%(nombre)s]",
-    migrate= migrate )
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 
@@ -271,7 +270,7 @@ db.define_table('calendarios',
     Field('feriado', type='boolean', default=False),
     Field('mensaje', type='string', length=50),
     format= "%(calendarioidid)s [%(fecha)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('calificaciones',
     Field('calificacionid', type='id'),
@@ -282,7 +281,7 @@ db.define_table('calificaciones',
     Field('equivalencia', type='boolean', default=False),
     Field('previa', type='boolean', default=False),
     format= "%(calificacionid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table('correlativas',
@@ -291,7 +290,7 @@ db.define_table('correlativas',
     Field('materiacorrelativa', db.materias),
     Field('planestudioid', db.planesestudio),
     format= "%(correlativaid)s [%(materiaid1)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('horas',
     Field('horaid', type='id'),
@@ -300,7 +299,7 @@ db.define_table('horas',
     Field('hasta', type='string'),
     Field('nivelid', db.niveles),
     format= "%(horaid)s [%(hora)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 
@@ -311,7 +310,7 @@ db.define_table('inasistencias',
     Field('descripcion', type='string', length=50),
     Field('cantidad', type='double', default=0),
     format= "%(inasistenciaid)s [%(descripcion)s]",
-    migrate=True)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 
 
@@ -336,7 +335,7 @@ db.define_table('periodos',
     Field('secuencia', type='integer'),
     Field('notaminima', type='double'),
     format= "%(periodoid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table('notas',
@@ -356,7 +355,7 @@ db.define_table('notas',
     Field('web', type='boolean', default=False),
     Field('turno', type='string', length=1),
     format= "%(notaid)s [%(nota)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.notas.fecha.requires=IS_DATE('%d-%m-%y')
     
@@ -367,7 +366,7 @@ db.define_table('titulos',
     Field('carreraid', db.carreras),
     Field('cursoid', db.cursos),
     format= "%(tituloidid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('comisiones',
     Field('comisionid', type='id'),
@@ -382,7 +381,7 @@ db.define_table('comisiones',
     Field('faltasrecursa', type='double'),
     Field('dias_habiles', type='double'),
     format= "%(comisionid)s [%(nombre)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('horarios',
     Field('horarioid', type='id'),
@@ -391,7 +390,7 @@ db.define_table('horarios',
     Field('dia', type='string', length=16),
     Field('detalle', type='string', length=25),
     format= "%(horarioid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('profesores',
     Field('profesorid', type='id'),
@@ -404,7 +403,7 @@ db.define_table('profesores',
     #Field('ref', type='string', length=1),
     Field('user_id', db.auth_user, readable= False, writable= False),
     format= "%(profesorid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 
@@ -417,7 +416,7 @@ db.define_table('sanciones',
     Field('detalle', type='text'),
     Field('parte', type='integer', default=0),
     format= "%(sancionid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 
@@ -425,7 +424,7 @@ db.define_table('situaciones',
     Field('situacionid', type='id'),
     Field('detalle', type='string', length=30),
     format= "%(situacionid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
     
@@ -439,7 +438,7 @@ db.define_table('faltas',
     Field('justificado', type='boolean', default=False),
     Field('detalle', type='string', length=50),
     format= "%(faltaid)s [%(detalle)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.faltas.fecha.requires=IS_DATE('%d-%m-%y')
 
@@ -455,7 +454,7 @@ db.define_table('examenes',
     Field('personalid2', db.personal),
     Field('personalid3', db.personal),
     format= "%(examenid)s [%(llamado)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.examenes.fecha.requires=IS_DATE('%d-%m-%y')
 
@@ -465,7 +464,7 @@ db.define_table('inscripcionescarrera',
     Field('carreraid', db.carreras),
     Field('alta', type='date', default=request.now.date(), required= True),
     Field('baja', type='date', readable= False, writable= False),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('inscripcionescomision',
     Field('inscripcionid', type='id'),
@@ -474,7 +473,7 @@ db.define_table('inscripcionescomision',
     Field('alta', type='date'),
     Field('baja', type='date'),
     Field('condicion', db.condiciones),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('inscripcionesdivision',
     Field('inscripcionid', type='id'),
@@ -483,7 +482,7 @@ db.define_table('inscripcionesdivision',
     Field('alta', type='date'),
     Field('baja', type='date'),
     Field('condicion', type='string', length=50),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 db.define_table('inscripcionesexamen',
     Field('inscripcionid', type='id'),
@@ -494,14 +493,14 @@ db.define_table('inscripcionesexamen',
     Field('baja', type='date'),
     Field('confirmar', type='boolean', default=False),
     Field('valido', type='boolean', default=False),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
     
 db.define_table('constancia_modelo',
     Field('modeloid', type='id'),
     Field('descripcion', type='string', length=200),
     Field('plantilla', type='text', comment=T('texto base')),
     format= "%(modeloid)s [%(descripcion)s]",
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table('constancia',
@@ -510,7 +509,7 @@ db.define_table('constancia',
     Field('modeloid', db.constancia_modelo),
     Field('fecha_alta', type='date'),
     Field('valido', type='boolean', default=False),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
 
 
 db.define_table('unidades',
@@ -519,4 +518,4 @@ db.define_table('unidades',
     Field('unidad_nro'),
     Field('titulo'),
     Field('contenidos'),
-    migrate=migrate)
+    migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)

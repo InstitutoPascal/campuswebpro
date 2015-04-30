@@ -1,7 +1,6 @@
 {{extend 'layout.html'}}
 
 <Center>
-	<h1>Inscripcion a Finales</h1>
 </Center>
 <form method="POST">
 <br>
@@ -9,7 +8,7 @@
 <table id="tabla">
 <tbody>
    <tr>
-        <td id="head"> CODIGO  </td>
+        <td id="head"> CÓDIGO  </td>
         <td id="head">MATERIA  </td>
         <td id="head"> DOCENTE </td>
         <td id="head"> FECHA </td>
@@ -35,9 +34,9 @@
     <font color="yellow">
         {{=' No Inscripto a comisión' if not  (f.examenes.materiaid in cursadas) else ''}}
     </font>
-    <font color="white"><b>
+    <font color="green">
         {{='Materia Aprobada' if (f.examenes.materiaid in aprobadas) else ''}}
-        </b></font>
+    </font>
     <font color="white">
         {{='Ya Inscripto Al Final' if (f.examenes.materiaid in inscripto) else ''}}
     </font>

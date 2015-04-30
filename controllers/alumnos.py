@@ -19,7 +19,6 @@ def libreta():
 
     q =db.alumnos.user_id== auth.user_id
     q &= db.alumnos.alumnoid==db.notas.alumnoid
-    q &= db.notas.calificacionid== 5
     notas=db(q).select(db.notas.materiaid,#asignamos a la variable nota la consulta de registros de la tabla nota del alumno.
                        db.notas.fecha,
                        db.notas.libro,
@@ -59,7 +58,7 @@ def libreta():
 
 @auth.requires_login()
 def index():
-    response.subtitle= "Menu de alumnos"
+    response.subtitle= "Menú de alumnos"
     fecha= request.now.date() #guardo la fecha actual
     fecha_actual= fecha.strftime("%d/%m/%Y") #cambio el formato de fecha a latino-american
     usuario=auth.user_id
@@ -205,7 +204,7 @@ def ingreso():
  #requiere que haya un usuario logeado
 @auth.requires_login()
 def inscripcioncarrera():
-    response.subtitle= "Inscripcion Carrera"
+    response.subtitle= "Inscripción Carrera"
     carreras= db(db.carreras).select(db.carreras.carreraid,
                                      db.carreras.nombre)
 ############
@@ -237,13 +236,9 @@ def inscripcioncarrera():
                                                        carreraid=carrera_id,
                                                        alta=fecha)
                         ok += 1 #creo contador de examenes insertados/seleccionados por el alumno
+                        redirect (URL (f="inscripcioncarrera"))
                     else:
                         response.flash= "Ya estas inscripto a esa carrera"
-        if ok:
-              response.flash= "Usted se a inscripto a %d carrera!" % ok
-        else:
-              response.flash = "Por favor seleccione una opción!"
-        redirect (URL (f="inscripcioncarrera"))
 
     return dict (carreras=carreras,
                  alumno=alumno,
@@ -304,7 +299,7 @@ def horarios():
 @auth.requires_membership(role='Alumnos')
 def horarios_comision():
    #lista los horarios dependiendo de la carrera
-    response.subtitle= "Horarios de comisión"
+    response.subtitle= "Horarios de comision"
     q = db.alumnos.user_id== auth.user_id
         #guardo en la consulta el registro del alumno
     alumno= db(q).select().first()     #traemos el alumno para notificarlo en la vista
@@ -362,7 +357,7 @@ def inasistencias():
 #requiere que haya un usuario logeado e integre el grupo alumnos
 #@auth.requires_membership(role='Alumnos')
 def examenes():
-    response.subtitle= "Examenes Finales Rendidos"
+    response.subtitle= "Exámenes Finales Rendidos"
      #litado de examenes finales ya rendidos
     q = db.alumnos.user_id== auth.user_id
     #traemos el alumno para notificarlo en la vista
@@ -389,6 +384,7 @@ def examenes():
 #requiere que haya un usuario logueado e integre el grupo alumnos
 #@auth.requires_membership(role='Alumnos')
 def final():
+    response.subtitle= "Inscripción a finales"
     #formulario de inscrip a examenes finales
     q = db.alumnos.user_id== auth.user_id
     #busca y trae todos los datos del alumno logueado
@@ -472,7 +468,7 @@ def final():
     mensajes = {}
     msj_inscripto = {}
     msj_disponible = {}
-    debe_correlativas= []
+    debe_correlativas = []
     for f in final:
         msg_aprobada=[]
         msg = []
@@ -491,8 +487,7 @@ def final():
             msg_aprobada.append("Materia Aprobada")
         msj_aprobada[f.examenes.materiaid] = ', '.join(msg_aprobada)
 
-    return dict (debe_correlativas=debe_correlativas,
-                 inscripto=inscripto,
+    return dict (inscripto=inscripto,
                  cursadas=cursadas,
                  final= final,
                  alumno=alumno,
@@ -501,6 +496,7 @@ def final():
                  desaprobadas= desaprobadas,
                  correlatividades=correlatividades,
                  mensajes=mensajes,
+                 debe_correlativas=debe_correlativas,
                  msj_aprobada= msj_aprobada,
                  msj_inscripto=msj_inscripto )
 def constancia_comision():
@@ -551,6 +547,7 @@ def constancia_final():
 @auth.requires_login() #requiere que haya un usuario logueado
 #@auth.requires_membership(role='Alumnos') #requiere que haya un usuario logueado e integre el grupo alumnos
 def parciales():
+    response.subtitle= "Parciales"
     #lista examenes cuatrimestrales ya rendidos
     q = db.alumnos.user_id== auth.user_id
     #guardo en la consulta el registro del alumno
@@ -577,7 +574,7 @@ def parciales():
 #requiere que haya un usuario logeado e integre el grupo alumnos
 @auth.requires_membership(role='Alumnos')
 def inscripciones():
-    response.subtitle= "Inscripcion a Comisiónes"
+    response.subtitle= "Inscripción a Comisiones"
     #formulario de inscrip. a comisiones
     q = db.alumnos.user_id== auth.user_id
     #busca y trae todos los datos del alumno logueado

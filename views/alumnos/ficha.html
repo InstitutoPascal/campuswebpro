@@ -1,13 +1,13 @@
 {{extend 'layout.html'}}
 
 <right>{{=IMG(_src=URL(c='default',f='download',args=alumno.foto),_style='width:280px; float: right; display: block')}}<right>
-<h2><u> Alumno/a:</u> {{=alumno.nombre}}</h2> 
-<h2><u> Fecha de Nacimiento:</u> {{=alumno.fechanacimiento.strftime("%d/%m/%Y")}} </h2> 
-<h2><u> Estado Civil:</u> {{=alumno.estadocivil}} </h2>
-<h2><u> Nacionalidad:</u> {{=alumno.nacionalidad}}  </h2>
-<h2><u> Localidad:</u> {{=alumno.localidad}}</h2>
-<h2><u> Email:</u> {{=alumno.email1}}</h2> 
-<h2><u> Ingreso:</u> {{=alumno.ingreso.strftime("%d/%m/%Y")}} </h2>
+<h2> Alumno/a: {{=alumno.nombre}}</h2> 
+<h1> Fecha de Nacimiento: {{=alumno.fechanacimiento.strftime("%d/%m/%Y")}} </h1> 
+<h>Estado Civil: {{=alumno.estadocivil}} </h1>
+<h1> Nacionalidad: {{=alumno.nacionalidad}}  </h1>
+<h1> Localidad: {{=alumno.localidad}}</h1>
+<h1> Email: {{=alumno.email1}}</h1> 
+<h1>Ingreso: {{=alumno.ingreso.strftime("%d/%m/%Y")}} </h1>
 <br>
 {{if alumno.alumnoid not in inscripcion:}}
 

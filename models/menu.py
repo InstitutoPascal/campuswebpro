@@ -15,12 +15,15 @@ response.title = request.application
 ##########################################
 
 response.menu = [
-    [T('Institucional'), False, URL(request.application,'default','index'), [
-        [T('Historia'), False, URL(request.application,'info','historia'), []],
-   [T('Por que elegirnos'), False, URL(request.application,'info','por_que_elegirnos'),[]],              
-      [T('Plantel Docente'), False, URL(request.application,'info','plantel_docente'), []],
-        [T('Palabras del Director'), False, URL(request.application,'info','director'), []],
-        [T('Cartelera'), False, URL(request.application,'cartelera','menu'), []]
+    [T('Alumnos'), False, URL(request.application,'alumnos','index'), ],
+       
+    [T('Docentes'), False, URL(request.application,'docentes','index'),],
+    [T('Cartelera'), False, URL(request.application,'cartelera','menu'), [
+        #[T('Historia'), False, URL(request.application,'info','historia'), []],
+   # [T('Por que elegirnos'), False, URL(request.application,'info','por_que_elegirnos'),[]],              
+      # [T('Plantel Docente'), False, URL(request.application,'info','plantel_docente'), []],
+       # [T('Palabras del Director'), False, URL(request.application,'info','director'), []],
+       # [T('Cartelera'), False, URL(request.application,'cartelera','menu'), []]
     ]],
     [T('Carreras'), False, URL(request.application,'carreras','index'), [
         [T('Analista de Sistemas'), False, URL(request.application,'carreras','programas'),[]],
@@ -54,32 +57,12 @@ response.menu = [
        [T('Materias Aprobadas'), False, URL(request.application,'constancia','materias_aprobadas'), []],
     ]],
     ]],   
-         
-    
 
 
-
-    [T('Graduados'), False, URL(request.application,'graduados','index'), []],
-    [T('Extensión Terciaria'), False, URL(request.application,'extension','index'), [
-        [T('FLISOL 2010'), False, URL("flisol2010",'default','index'), []],
-    ]],
-    [T('Inserción Laboral'), False, URL(request.application,'laboral','index'), []],
+    #[T('Graduados'), False, URL(request.application,'graduados','index'), []],
+    #[T('Extensión Terciaria'), False, URL(request.application,'extension','index'), [
+        #[T('FLISOL 2010'), False, URL("flisol2010",'default','index'), []],
+    #]],
+    #[T('Inserción Laboral'), False, URL(request.application,'laboral','index'), []],
     [T('Admin'), False, "https://www.institutopascal.edu.ar/admin", []],
-    
-    
-    [T('CAMPUS WEB'), False, URL(request.application,'default','index'), [
-        [T('Alumnos'), False, URL(request.application,'default','index'), [
-        [T('Ingresar'), False, URL(request.application,'alumnos','index'), []],
-        [T('Manual de usuario'), False, URL(request.application,'default','index'), []],
-       ]],
-       
-    [T('Docentes'), False, URL(request.application,'docentes','index'), [ 
-       [T('Ingresar'), False, URL(request.application,'docentes','index'), []],
-       [T('Manual de usuario'), False, URL(request.application,'docentes','Manual'), []],
-      
-    ]],
-        
-    ]],   
-    
     ]
-response.menu_flisol = [T('FLISOL 2010'), False, URL("flisol2010",'default','index')]

@@ -1,7 +1,6 @@
 # coding: utf8
 # try something like
 
-@auth.requires_login()
 @auth.requires_membership(role='Docentes')
 def index():
     response.title="Docentes"

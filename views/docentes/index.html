@@ -1,9 +1,9 @@
 {{extend 'layout.html'}} 
 <center>
-    <h3><B><u>MENÚ DOCENTES</u></B></h3>Prof. {{for docente in docentes:}}{{=docente.nombre}} {{pass}}
+    <h3><B><u>MENÚ DOCENTES</u></B></h3>{{for docente in docentes:}}Prof. {{=docente.nombre}} 
                     <h2><a href="{{=URL(f="ficha", args=docente.id)}}">
                     - Ficha Personal
-                    </a></h2>
+                    </a></h2>{{pass}}
 <BR>
 <FORM method="POST">
     <TABLE id= "tabla">

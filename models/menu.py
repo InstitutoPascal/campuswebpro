@@ -18,11 +18,11 @@ response.menu = [
     [T('Alumnos'), False, URL(request.application,'alumnos','index'), ],
        
     [T('Docentes'), False, URL(request.application,'docentes','index'),],
+    [T('Plantel Docente'), False, URL(request.application,'info','plantel_docente'), []],
 [T('Historia'), False, URL(request.application,'info','historia'), []],
     [T('Cartelera'), False, URL(request.application,'cartelera','menu'), [
        # [T('Por que elegirnos'), False, URL(request.application,'info','por_que_elegirnos'),[]],              
-      # [T('Plantel Docente'), False, URL(request.application,'info','plantel_docente'), []],
-       # [T('Palabras del Director'), False, URL(request.application,'info','director'), []],
+             # [T('Palabras del Director'), False, URL(request.application,'info','director'), []],
        # [T('Cartelera'), False, URL(request.application,'cartelera','menu'), []]
     ]],
     [T('Carreras'), False, URL(request.application,'carreras','index'), [

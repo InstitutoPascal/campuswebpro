@@ -519,3 +519,10 @@ db.define_table('unidades',
     Field('titulo'),
     Field('contenidos'),
     migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)
+
+db.define_table('novedades_institucion',
+    Field ('fecha_novedad', type='date', default=request.now.date(), label=T('Fecha')),
+    Field ('titulo', type='string', length= 100, required=True, label=T('Titulo')),
+    Field ('texto', type='text', required=True,),
+    Field ('imagen',type='upload', length=50),
+    migrate=True, fake_migrate=False),

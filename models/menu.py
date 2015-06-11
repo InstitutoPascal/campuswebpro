@@ -59,10 +59,7 @@ response.menu = [
     ]],   
 
 
-    #[T('Graduados'), False, URL(request.application,'graduados','index'), []],
-    #[T('Extensión Terciaria'), False, URL(request.application,'extension','index'), [
-        #[T('FLISOL 2010'), False, URL("flisol2010",'default','index'), []],
-    #]],
-    #[T('Inserción Laboral'), False, URL(request.application,'laboral','index'), []],
+    [T('Novedades'), False, URL(request.application,'novedades_institucion','index'), []],
+    
     [T('Admin'), False, "https://www.institutopascal.edu.ar/admin", []],
     ]

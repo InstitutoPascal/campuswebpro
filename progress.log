@@ -4,3 +4,6 @@
 [2015-05-14 19:46:10] EDIT campuswebpro/models/app_settings.py: 1
 [2015-05-14 19:47:30] EDIT campuswebpro/models/app_settings.py: -1
 [2015-06-18 19:33:38] EDIT campuswebpro/models/menu.py: -2
+[2015-06-18 19:49:57] EDIT campuswebpro/controllers/info.py: 2
+[2015-06-18 19:52:46] CREATE info/plantel_docente.html: 0
+[2015-06-18 19:54:39] EDIT campuswebpro/views/info/plantel_docente.html: 1

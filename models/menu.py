@@ -45,18 +45,16 @@ response.menu = [
 
     
     
-
     [T('Tramites'), False, URL(request.application,'tramites','index'), [
        [T('Iniciar'), False, URL(request.application,'tramites','iniciar'), []],
-        [T('Consultar'), False, URL(request.application,'tramites','consultar'),[]],
+ #       [T('Consultar'), False, URL(request.application,'tramites','consultar'),[]],
         [T('Actualizar'), False, URL(request.application,'tramites','actualizar',),[]],
-    [T('Constancias'), False, URL(request.application,'default','index'), [ 
-        [T('Alumno Regular'), False, URL(request.application,'constancia','alumno_regular'), []],
-       [T('Titulo en Tramite'), False, URL(request.application,'constancia','titulo_en_tramite'), []],
-       [T('Reincorporacion'), False, URL(request.application,'constancia','reincorporacion'), []],
-       [T('Materias Aprobadas'), False, URL(request.application,'constancia','materias_aprobadas'), []],
-    ]],
-    ]],   
+#    [T('Constancias'), False, URL(request.application,'default','index'), [ 
+ #       [T('Alumno Regular'), False, URL(request.application,'constancia','alumno_regular'), []],
+  #     [T('Titulo en Tramite'), False, URL(request.application,'constancia','titulo_en_tramite'), []],
+   #    [T('Reincorporacion'), False, URL(request.application,'constancia','reincorporacion'), []],
+    #   [T('Materias Aprobadas'), False, URL(request.application,'constancia','materias_aprobadas'), []],
+   ]],   
 
 
     [T('Novedades'), False, URL(request.application,'novedades_institucion','index'), []],

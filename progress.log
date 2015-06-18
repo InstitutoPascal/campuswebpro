@@ -1,9 +1,15 @@
-[2015-05-14 19:43:56] START
-[2015-05-14 19:43:56] EDIT campuswebpro/models/app_settings.py: 0
-[2015-05-14 19:44:36] EDIT campuswebpro/models/app_settings.py: 0
-[2015-05-14 19:46:10] EDIT campuswebpro/models/app_settings.py: 1
-[2015-05-14 19:47:30] EDIT campuswebpro/models/app_settings.py: -1
-[2015-06-18 19:33:38] EDIT campuswebpro/models/menu.py: -2
-[2015-06-18 19:49:57] EDIT campuswebpro/controllers/info.py: 2
-[2015-06-18 19:52:46] CREATE info/plantel_docente.html: 0
-[2015-06-18 19:54:39] EDIT campuswebpro/views/info/plantel_docente.html: 1
+[2015-06-11 19:04:37] START
+[2015-06-11 19:04:37] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:06:48] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:10:08] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:18:28] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:21:39] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:39:00] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:39:38] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:41:47] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:44:13] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:45:34] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:47:28] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:48:22] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-11 19:48:57] EDIT campuswebpro/models/app_settings.py: 0
+[2015-06-18 20:15:45] EDIT campuswebpro/models/db.py: 0

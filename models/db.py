@@ -65,7 +65,7 @@ auth.messages.verify_password = 'Verificar Contraseña'
 auth.messages.label_remember_me = 'Recordarme (30 dias)'
 auth.messages.verify_password_comment = 'Ingrese su contraseña nuevamente'
 auth.messages.register_button = 'Registrarse'
-auth.messages.login_button = 'Iniciar seción'
+auth.messages.login_button = 'Iniciar sesión'
 
 auth.settings.reset_password_requires_verification = True
 auth.messages.reset_password = 'Presione en el enlace http://'+request.env.http_host+URL(r=request,c='default',f='user',args=['reset_password'])+'/%(key)s para reestablecer su contraseña'

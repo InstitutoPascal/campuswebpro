@@ -5,14 +5,31 @@
 <html>
     <p><b> Alumno : {{=alumno.nombre}}</b></p>
     <p><b> Dni : {{=alumno.dni}}</b></p>
-<p><b> Estados:</b></p>
-<select> 
-	<option> Iniciado </option>
-	<option> Confeccionado </option>
-	<option> Autenticado</option>
-	<option> Listo para entregar </option>
-	<option> Finalizado </option>
-</select>
+
+    
+   <table border="2px">
+    <TR>
+		<TH>N° De Tramite</TH> <TH>Tipo de tramite</TH> <TH>Estado</TH>
+	</TR>
+	<TR>
+		<TD> 1 </TD> <TD>2 </TD> <TD><select>
+                                        <option> Iniciado </option>
+                                        <option> Confeccionado </option>
+                                        <option> Autenticado</option>
+                                        <option> Listo para entregar </option>
+                                        <option> Finalizado </option>
+                                    </select></TD>
+	</TR>
+	<TR>
+		<TD>2 </TD> <TD>3 </TD> <TD><select> 
+                                        <option> Iniciado </option>
+                                        <option> Confeccionado </option>
+                                        <option> Autenticado</option>
+                                        <option> Listo para entregar </option>
+                                        <option> Finalizado </option>
+                                   </select> </TD>
+	</TR>
+</TABLE>	
 <p><b> Comentarios:</b></p>
 <form name=myform>
 <textarea name=mytextarea  cols=45 rows=8>

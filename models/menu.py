@@ -57,7 +57,7 @@ response.menu = [
    ]],   
 
 
-    [T('Novedades'), False, URL(request.application,'novedades_institucion','index'), []],
+    [T('Novedades'), False, URL(request.application,'novedades_institucion','mostrar_novedades'), []],
     
     [T('Admin'), False, "https://www.institutopascal.edu.ar/admin", []],
     ]

@@ -6,13 +6,19 @@
     <p><b> Dni : {{=alumno.dni}}</b></p>
 
     <p><b></b></p>
-
-<select>
-	<option> Constancia de alumno regular </option>
-	<option> Reincorporación de alumno </option>
-	<option> Certificados de materias aprobadas </option>
-	<option> Titulo en tramite </option>
-</select>
+<b><h1>Tramites:</h1></b>
+<li>
+<u><a href="{{=URL (c= "constancia",f="alumno_regular")}}">Constancia de alumno regular</a>
+</li>
+<li>
+<a href="{{=URL (c= "constancia",f="materias_aprobadas")}}">Certificados de materias aprobadas</a>
+</li>
+<li>
+<a href="{{=URL (c= "constancia",f="reincorporacion")}}">Reincorporación de alumno</a>
+</li>
+<li>
+<a href="{{=URL (c= "constancia",f="titulo_en_tramite")}}">Titulo en tramite</a>
+</li>
 
 
 <p><b> Comentarios: </b></p> 

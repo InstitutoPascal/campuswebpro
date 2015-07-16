@@ -3,22 +3,11 @@
 Tecnológico
 Blaise Pascal
 <li>Puerto argentino 4238 – (1759) González Catan  <li>tel. /fax: 02202-427725
-<li>www.institutopascal.edu.ar e-mail: informes@institutopascal.edu.ar</h4>
+<li>www.institutopascal.edu.ar , e-mail: informes@institutopascal.edu.ar</h4>
 
 
-<p>Constancia de Certificado de Estudios en trámite</p>
-<p>
-</p>
-<p>………………… Rector</p>
-<p>
-Hace constar que {{=alumno.nombre}} de "carrera" Año "año" División, tiene en tramite su certificado de estudios de……………………………………………………………………………………………………………………………
-<p>
-    </p>
-<p>DATOS CORRESPONDIENTES</p>
-Nº de documento de identidad DNI/ L.C/ E : {{=alumno.dni}}
-Materias que adeuda……………………………………………………………………………………………………
-idioma extranjero cursado……………………………………………………………………………………………
-a pedido de …………………………………… Interesad…………………………… Se extiende la presente constancia, sin enmiendas ni raspaduras, <script languaje="JavaScript">
+<Title>Constancia de Certificado de Estudios en trámite</title>
+<p>Buenos Aires, <script languaje="JavaScript">
 var mydate=new Date()
 var year=mydate.getYear()
 if (year < 1000)
@@ -28,10 +17,32 @@ var month=mydate.getMonth()
 var daym=mydate.getDate()
 if (daym<10)
 daym="0"+daym
-var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Juev es","Viernes","Sabado")
-var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Ju nio","Julio","Agosto","Septiembre","Octubre","Novi embre","Diciembre")
+var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado")
+var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
-</script>, para ser presentada ante las autoridades de ………………………………………………………………………………………………………………………………………………
+</script></p>
+<p>....... Rector</p>
+<p>
+Hace constar que {{=alumno.nombre}} de "carrera" Año "año" División, tiene en tramite su certificado de estudios de ......................
+</p>
+<p>DATOS CORRESPONDIENTES</p>
+<p>Nº de documento de identidad DNI/ L.C/ E : {{=alumno.dni}} </p>
+<p>Materias que adeuda ......................... </p>
+<p>Idioma extranjero cursado ...................... </p>
+<p>A pedido del interesado se extiende la presente constancia <script languaje="JavaScript">
+var mydate=new Date()
+var year=mydate.getYear()
+if (year < 1000)
+year+=1900
+var day=mydate.getDay()
+var month=mydate.getMonth()
+var daym=mydate.getDate()
+if (daym<10)
+daym="0"+daym
+var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado")
+var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
+document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
+</script>, para ser presentada ante las autoridades de ..................................... .
 
 
 </p>

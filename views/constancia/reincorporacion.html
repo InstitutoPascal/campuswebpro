@@ -16,19 +16,18 @@ var month=mydate.getMonth()
 var daym=mydate.getDate()
 if (daym<10)
 daym="0"+daym
-var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Juev es","Viernes","Sabado")
-var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Ju nio","Julio","Agosto","Septiembre","Octubre","Novi embre","Diciembre")
+var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado")
+var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
 </script></p>
 
-<p>Tengo el agrado de dirigirme a usted a efectos de solicitarle quiera tener a bien concederme 
-la reincorporación por haberme excedido en el límite de inasistencias</p>
+<p>Tengo el agrado de dirigirme a usted a efectos de solicitarle la reincorporación por haberme excedido en el límite de inasistencias</p>
 
 
 <p> Sin otro particular, saludo a usted muy atentamente.
 El docente a cargo del curso, si así lo creyera conveniente, dará la conformidad a la reincorporación </p>
 
-<blockquote>{{=alumno.nombre}}</blockquote>
+<blockquote>{{=alumno.nombre}} {{=alumno.dni}}</blockquote>
 
 <blockquote>Sello de la institucion</blockquote>
 

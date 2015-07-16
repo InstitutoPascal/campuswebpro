@@ -1,16 +1,22 @@
 {{extend 'layout.html'}}
+
+
 <H4><li>DIPREGEP 6131 <li>DIRECCION GENERAL DE CULTURA Y EDUCACION DE LA PROVINCIA DE BUENOS AIRES <li>Instituto Superior
 Tecnológico
 Blaise Pascal
 <li>Puerto argentino 4238 – (1759) González Catan  <li>tel. /fax: 02202-427725
 <li>www.institutopascal.edu.ar	e-mail: informes@institutopascal.edu.ar</h4>
 
+<html>
+<head>
+    <title>
+    Certicado de materias aprobadas</title>
+</head>
 
 <p>El Instituto Superior Tecnológico Blaise Pascal certifica que {{=alumno.nombre}} </p>
-<p>DNI  {{=alumno.dni}}  ha aprobado el …… % de las materias de la carrera de tecnicatura de analisis de sistemas</p>
-<p>Resolución Nº…………………………… en este establecimiento</p>
-
-<p>se extiende el presente certificado, el dia <script languaje="JavaScript">
+<p>DNI  {{=alumno.dni}}  ha aprobado el .... % de las materias de la carrera de Tecnicatura de Analisis de Sistemas</p>
+<p>Resolución Nº .......... en este establecimiento.</p>
+<p>Se extiende el presente certificado, el dia <script languaje="JavaScript">
 var mydate=new Date()
 var year=mydate.getYear()
 if (year < 1000)
@@ -20,11 +26,12 @@ var month=mydate.getMonth()
 var daym=mydate.getDate()
 if (daym<10)
 daym="0"+daym
-var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Juev es","Viernes","Sabado")
-var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Ju nio","Julio","Agosto","Septiembre","Octubre","Novi embre","Diciembre")
+var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado")
+var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre")
 document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
-</script> a pedido</p>
-<p>del interesado para ser presentado ante quien corresponda</p>
+</script> 
+
+<p>A pedido del interesado para ser presentado ante quien corresponda</p>
 
 
 
@@ -37,3 +44,4 @@ document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+mont
 
 
 <input type="button" name=myButton value="Imprimir">
+</html>

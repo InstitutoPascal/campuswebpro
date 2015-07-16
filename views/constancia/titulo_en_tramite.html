@@ -11,14 +11,27 @@ Blaise Pascal
 </p>
 <p>………………… Rector</p>
 <p>
-Hace constar que……………………………………………………………………………………………………………………………………… de………………………………… Año………………………División, tiene en tramite su certificado de estudios de……………………………………………………………………………………………………………………………
+Hace constar que {{=alumno.nombre}} de "carrera" Año "año" División, tiene en tramite su certificado de estudios de……………………………………………………………………………………………………………………………
 <p>
     </p>
 <p>DATOS CORRESPONDIENTES</p>
-Nº de documento de identidad DNI/ L.C/ E…………………………………………………………………
+Nº de documento de identidad DNI/ L.C/ E : {{=alumno.dni}}
 Materias que adeuda……………………………………………………………………………………………………
 idioma extranjero cursado……………………………………………………………………………………………
-a pedido de …………………………………… Interesad…………………………… Se extiende la presente constancia, sin enmiendas ni raspaduras, en……………………………………………………………………… a los……………………………………………………………días del mes de …………………………………………… de………………………, para ser presentada ante las autoridades de ………………………………………………………………………………………………………………………………………………
+a pedido de …………………………………… Interesad…………………………… Se extiende la presente constancia, sin enmiendas ni raspaduras, <script languaje="JavaScript">
+var mydate=new Date()
+var year=mydate.getYear()
+if (year < 1000)
+year+=1900
+var day=mydate.getDay()
+var month=mydate.getMonth()
+var daym=mydate.getDate()
+if (daym<10)
+daym="0"+daym
+var dayarray=new Array("Domingo","Lunes","Martes","Miercoles","Juev es","Viernes","Sabado")
+var montharray=new Array("Enero","Febrero","Marzo","Abril","Mayo","Ju nio","Julio","Agosto","Septiembre","Octubre","Novi embre","Diciembre")
+document.write("<font color='' face='Arial'>"+dayarray[day]+" "+daym+" de "+montharray[month]+" de "+year+"</font>")
+</script>, para ser presentada ante las autoridades de ………………………………………………………………………………………………………………………………………………
 
 
 </p>

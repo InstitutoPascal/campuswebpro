@@ -25,22 +25,10 @@ response.menu = [
              # [T('Palabras del Director'), False, URL(request.application,'info','director'), []],
        # [T('Cartelera'), False, URL(request.application,'cartelera','menu'), []]
     ]],
-    [T('Carreras'), False, URL(request.application,'carreras','index'), [
-        [T('Analista de Sistemas'), False, URL(request.application,'carreras','programas'),[]],
-        [T('Tecnicatura en redes informaticas'), False, URL(request.application,'carreras','redes'), []],
-        
-        [T('Salud'), False, URL(request.application,'carreras','salud'), [
-            [T('Enfermería'), False, URL(request.application,'carreras','salud_enfermeria'), []],
-            [T('Instrumentación'), False, URL(request.application,'carreras','salud_instrumentacion'),  []],
-            [T('Laboratorio'), False, URL(request.application,'carreras','salud_laboratorio'), []],
-            [T('Radiología'), False, URL(request.application,'carreras','salud_radiologia'), []],
-            [T('Cardiología'), False, URL(request.application,'carreras','salud_cardiologia'), []],
-            [T('Auxiliar en enfermeria'), False, URL(request.application,'carreras','salud_auxenfermeria'), []],
+    [T('Carreras'), False, URL(request.application,'carreras','index')],
 
 
             
-        ]],
-    ]],
     
 
     

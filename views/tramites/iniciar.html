@@ -1,6 +1,12 @@
 {{extend 'layout.html'}}
+
+{{import datetime}}
+
+<h2> Fecha: {{=datetime.date.today()}}</h2>
+
 <html>
-<h1>Seleccion De Tramites Del Instituto Superior Blaise Pascal</h1> 
+<h4>
+<h1>Seleccion De Tramites Del Instituto Superior Blaise Pascal</h1>
 
     <p><b> Alumno : {{=alumno.nombre}}</b></p> 
     <p><b> Dni : {{=alumno.dni}}</b></p>
@@ -20,12 +26,11 @@
 <a href="{{=URL (c= "constancia",f="titulo_en_tramite")}}">Titulo en tramite</a>
 </li>
 
-<p><b> Comentarios:</b></p>
+
+<p><b> Comentarios: </b></p> 
 <form name=myform>
 <textarea name=mytextarea  cols=45 rows=8>
 </textarea>
 </form>
-<input type="button" name= "boton" value="Enviar comentarios"/>    
-    
-    
+<input type="button" value="Enviar comentarios" /></form></form>
 </html>

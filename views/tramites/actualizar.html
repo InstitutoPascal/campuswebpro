@@ -1,5 +1,9 @@
 {{extend 'layout.html'}}
 
+{{import datetime}}
+
+<h2> Fecha: {{=datetime.date.today()}}</h2>
+
 <h1>Actualización De Tramites Del Instituto Superior Blaise Pascal</h1>
 
 <html>
@@ -49,5 +53,5 @@
 	
 
  
-<input type="button" name= "boton" value="Aceptar"/> 
+<input type="button" name= "boton" value="Imprimir"/> 
 </html>

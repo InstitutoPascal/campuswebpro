@@ -11,7 +11,7 @@ def iniciar():
     response.subtitle= "Menú Iniciar Tramite"
     q = db.alumnos.user_id== auth.user_id    #guardo en la consulta el registro del alumno
     alumno= db(q).select().first() #traemos el alumno para notificarlo en la vista
-    #q &=db.alumnos.alumnoid==db.inscripcionescarrera.alumnoid
+    q &=db.alumnos.alumnoid==db.inscripcionescarrera.alumnoid
     #carrera=db(q &) .inscripcionescarrera.carreraid==db.carreras.nombre
     return {'alumno': alumno}
 

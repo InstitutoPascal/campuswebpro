@@ -10,47 +10,65 @@ def menu():
     
 def horarios():
     response.title = "Cartelera"
-    response.subtitle="Horarios de las materias"   
+    response.subtitle="Horarios de las materias"
     CARRERAID=1 #analisis de sistemas
     ANIO=1 #PRIMER AÑO
-    CICLOID=5 #ciclo lectivo 2014
-    q=db.materias.cursoid==ANIO
-    q&=db.asignaturas.carreraid==CARRERAID
+    CICLOID=6 #ciclo lectivo 2015
+    #q=db.materias.cursoid==ANIO
+    q=db.asignaturas.carreraid==CARRERAID
     q&=db.asignaturas.cicloid==CICLOID
     q&=db.asignaturas.materiaid==db.materias.materiaid
     q&=db.materias.materiaid==db.comisiones.materiaid
     q&=db.comisiones.comisionid==db.horarios.comisionid
     q&=db.horarios.horaid==db.horas.horaid
-    q&=db.comisiones.personalid==db.personal.personalid 
-    filas=db(q).select(db.materias.nombre,db.horarios.dia,db.horas.desde,db.horas.hasta,db.personal.nombre)
- 
-    ANIO=2 #SEGUNDO AÑO
-    
-    q=db.materias.cursoid==ANIO
-    q&=db.asignaturas.carreraid==CARRERAID
-    q&=db.asignaturas.cicloid==CICLOID
-    q&=db.asignaturas.materiaid==db.materias.materiaid
-    q&=db.materias.materiaid==db.comisiones.materiaid
-    q&=db.comisiones.comisionid==db.horarios.comisionid
-    q&=db.horarios.horaid==db.horas.horaid
-    q&=db.comisiones.personalid==db.personal.personalid 
-    filas2=db(q).select(db.materias.nombre,db.horarios.dia,db.horas.desde,db.horas.hasta,db.personal.nombre)
-    
-    return {'filas':filas,'filas2':filas2}
+    q&=db.comisiones.personalid==db.personal.personalid
+    filas=db(q).select(db.horarios.horarioid,db.materias.nombre,db.horarios.dia,db.horas.desde,db.horas.hasta,db.personal.nombre,db.materias.cursoid)
+    sql = db._lastsql
+    return {'filas':filas, "sql": sql}
+def editar_horarios():
+    HORARIOID = request.args[0]
+    form = SQLFORM(db.horarios, HORARIOID)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="horarios"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}
+def agregar_horarios():
+    form = SQLFORM(db.horarios)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="horarios"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}
         
-def novedades():
-    response.title = "cartelera"
-    response.subtitle="Novedades"   
-    return {}
+def agenda():
+   response.title = "cartelera"
+   response.subtitle="Agenda"   
+   response.subtitle= "Inscripcion Carrera"
+   form = SQLFORM.factory(
+        Field("Date", "date"),
+        
+        )
+   if form.process().validate:
+    response.flash = form.vars.Date
+   return dict (form=form)
+    
 
 
 def examenes():
     response.title = "Cartelera"
     response.subtitle="Exámenes Finales"   
+    
     CARRERAID=1 #analisis de sistemas
-    CICLOID=5 #ciclo lectivo 2014
+    CICLOID=6 #ciclo lectivo 2015
     LLAMADO=1 #PRIMER LLAMADO
-    EXAMEN_PERIODO=30 #EXAMEN DICIEMBRE 2014
+    EXAMEN_PERIODO=35 #EXAMEN DICIEMBRE 2014
     COMISION_PERIODO=33 #periodo2014
     
     q=db.asignaturas.carreraid==CARRERAID
@@ -60,22 +78,48 @@ def examenes():
     #OBTENEMOS EL EXAMEN DE ESA MATERIA EN EL PERIODO DICIEMBRE 2014 Y EL PRIMER LLAMADO
     q&=db.materias.materiaid==db.examenes.materiaid
     q&=db.examenes.periodoid==EXAMEN_PERIODO
-    q&=db.examenes.llamado==LLAMADO 
+    ##q&=db.examenes.llamado==LLAMADO 
     #OBTENGO LA MATERIA CORRELATIVA DE LA ACTUAL
-    q&=db.materias.materiaid==db.correlativas.materiaid
+    ###q&=db.materias.materiaid==db.correlativas.materiaid
     #CONSULTAMOS COMISION ACTUAL DE LA MATERIA EN ESTE PERIODO 2014 PARA VER EL DOCENTE
-    q&=db.materias.materiaid==db.comisiones.materiaid
-    q&=db.comisiones.periodoid==COMISION_PERIODO
-    q&=db.comisiones.personalid==db.personal.personalid
-    filas=db(q).select(db.materias.codigo,db.materias.nombre,db.cursos.nombre, db.examenes.fecha,db.examenes.hora,db.correlativas.materiacorrelativa,db.personal.nombre)
+    ##q&=db.materias.materiaid==db.comisiones.materiaid
+    ##q&=db.comisiones.periodoid==COMISION_PERIODO
+    ##q&=db.comisiones.personalid==db.personal.personalid
+    q&=db.examenes.personalid1==db.personal.personalid
+    filas=db(q).select(db.examenes.examenid, db.materias.materiaid, db.materias.codigo,db.materias.nombre,db.cursos.nombre, db.examenes.fecha,db.examenes.hora,db.personal.nombre)
+    sql = db._lastsql
     correla_map ={}
     for fila in filas:
-        MATERIA=fila.correlativas.materiacorrelativa
-        q=db.materias.materiaid==MATERIA
-        materias=db(q).select(db.materias.codigo)
-        for materia in materias:
-            if fila.materias.codigo==materia.codigo: #SI EL COD DE MATERIA = COD DE CORRELA 
-                correla_map[fila.materias.codigo] = '---' 
-            else:
-                correla_map[fila.materias.codigo] = materia.codigo
-    return {'filas':filas,'correla_map':correla_map}
+        MATERIAID=fila.materias.materiaid
+        q=db.correlativas.materiaid==MATERIAID
+        q&=db.materias.materiaid==db.correlativas.materiacorrelativa
+        correlativas=db(q).select(db.materias.codigo)
+        correla_map[fila.materias.codigo] = []  # lista de correlativas
+        for correlativa in correlativas:
+            correla_map[fila.materias.codigo].append(correlativa.codigo)
+    return {'filas':filas,'correla_map':correla_map, "sql": sql}
+
+
+def editar_examen():
+    EXAMENID = request.args[0]
+    
+    form = SQLFORM(db.examenes, EXAMENID)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="examenes"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}
+
+def agregar_examen():
+    form = SQLFORM(db.examenes)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="examenes"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}

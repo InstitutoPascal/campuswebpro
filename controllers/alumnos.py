@@ -9,7 +9,7 @@ response.title = "Campus Web Pro"
 def libreta():
     response.subtitle= "Completar Libreta"#titulo que sale en el subtitulo de la vista
     q = db.alumnos.user_id== auth.user_id #guardo en la consulta el registro del alumno
-    alumno= db(q).select().first() #metemos en una variable al alumno para notificarlo en la vista
+    alumno= db(q).select().first() #insertamos en una variable al alumno para notificarlo en la vista
     q &= db.materias.materiaid== db.asignaturas.materiaid
     q &= db.asignaturas.carreraid== db.carreras.carreraid
     q &= db.inscripcionescarrera.alumnoid== db.alumnos.alumnoid
@@ -110,28 +110,28 @@ def index():
                     )
 #nuevamente trae al alumno que usa el sistema
     c = db.alumnos.user_id == auth.user_id   
-#filtra las faltas del alumno para cada comicion inscipto
+#filtra las faltas del alumno para cada comision inscipto
     c &= db.faltas.alumnoid == db.alumnos.alumnoid
     c &= db.faltas.comisionid == db.comisiones.comisionid
     c &= db.materias.materiaid== db.comisiones.materiaid
     c &= db.inscripcionescomision.comisionid== db.comisiones.comisionid
     c &= db.inscripcionescomision.alumnoid== db.alumnos.alumnoid
     c &= db.inscripcionescomision.condicion== db.condiciones.condicionid
-#asigna a la varible faltas la seleccion de los sigienntes campos
+#asigna a la varible faltas la seleccion de los sigientes campos
     faltas=db(c).select(db.materias.id,
                         db.materias.nombre,
                         db.comisiones.nombre,
                         db.comisiones.materiaid,
                         db.condiciones.detalle,
                         db.alumnos.nombre,
-                        db.faltas.cantidad.sum().with_alias("suma"),#suma la cantidad total de faltas por la comicion
+                        db.faltas.cantidad.sum().with_alias("suma"),#suma la cantidad total de faltas por la comision
                         groupby=(db.alumnos.nombre,
                                  db.materias.id,
                                  db.materias.nombre,
                                  db.comisiones.nombre,
                                  db.comisiones.materiaid,
                                  db.condiciones.detalle,))
-#crea diccionario que se completa con el id de la comicion y la cantidad total de faltas
+#crea diccionario que se completa con el id de la comision y la cantidad total de faltas
     faltas_map = dict([(f.comisiones.materiaid, f.suma) for f in faltas])
     return dict (fecha_actual=fecha_actual,
                  visible= visible,

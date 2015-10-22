@@ -24,14 +24,14 @@ def listado_inasistencias():
     condicion=5 #REGULAR
     
     q = db.comisiones.comisionid==COMISIONID
-    # Busca las comisiones que coincidan
+  # Busca las comisiones que coincidan
     q &= db.comisiones.materiaid == db.materias.materiaid
     materias=db(q).select(db.materias.nombre)
-    
+   
     q  = db.alumnos.alumnoid == db.inscripcionescomision.alumnoid
     q &= db.inscripcionescomision.comisionid == COMISIONID
     q &= db.inscripcionescomision.condicion == condicion
-    #q &= db.faltas.alumnoid == db.alumnos.alumnoid
+    q &= db.faltas.alumnoid == db.alumnos.alumnoid
     alumnos=db(q).select(db.alumnos.alumnoid,db.alumnos.nombre,groupby=db.alumnos.alumnoid)
 
     q  = db.alumnos.alumnoid == db.inscripcionescomision.alumnoid
@@ -41,7 +41,7 @@ def listado_inasistencias():
     q &= db.inscripcionescomision.alumnoid == db.alumnos.alumnoid
     q &= db.inscripcionescomision.condicion == condicion
     q &= db.faltas.alumnoid == db.alumnos.alumnoid
-    #DIAS HABILES
+   #DIAS HABILES
     faltas=db(q).select(db.faltas.alumnoid,db.comisiones.dias_habiles)
     faltas_1p_map ={}
 
@@ -89,10 +89,10 @@ def listado_inasistencias():
     q  = db.faltas.alumnoid == db.inscripcionescomision.alumnoid
     q &= db.inscripcionescomision.comisionid == COMISIONID
     q &= db.inscripcionescomision.alumnoid == db.alumnos.alumnoid
-    q &= db.inscripcionescomision.condicion == condicion
+    q &= db.inscripcionescomision.condicion == 1
     q &= db.faltas.alumnoid == db.alumnos.alumnoid
     q &= db.faltas.comisionid == COMISIONID
-    q&=db.faltas.inasistenciaid <= 3 #MEDIA FALTA
+    q&=db.faltas.inasistenciaid <= 5 #MEDIA FALTA
     #SUMA DE MEDIAS FALTAS
     faltas=db(q).select(db.faltas.alumnoid,db.faltas.cantidad.sum().with_alias("suma"),groupby=db.faltas.alumnoid)
 
@@ -102,7 +102,7 @@ def listado_inasistencias():
         faltas_4p_map[falta.faltas.alumnoid] = falta.suma
 
 
-    return{'materias':materias, 'alumnos':alumnos, "faltas_1p_map": faltas_1p_map,"faltas_2p_map": faltas_2p_map,"faltas_3p_map": faltas_3p_map,"faltas_4p_map": faltas_4p_map,"porcentaje_map":porcentaje_map,"condicion_map":condicion_map}
+    return{'materias':materias, 'alumnos':alumnos, "faltas_1p_map": faltas_1p_map,"faltas_2p_map": faltas_2p_map,"faltas_3p_map": faltas_3p_map,"faltas_4p_map": faltas_4p_map,"porcentaje_map":porcentaje_map,"condicion_map":condicion_map, "sql": db._lastsql}
 
 @auth.requires_login()
 @auth.requires_membership(role='Docentes')
@@ -131,7 +131,7 @@ def listaparciales():
     # Busca las comisiones que coincidan
     q &= db.inscripcionescomision.condicion == 2 #REGULAR
     q &= db.inscripcionescomision.comisionid ==  db.comisiones.comisionid
-    #q &= db.inscripcionesexamen.examenid == db.examenes.examenid
+    q &= db.inscripcionesexamen.examenid == db.examenes.examenid
     q &= db.comisiones.materiaid == db.notas.materiaid
     q &= db.notas.calificacionid == 3 #PARCIAL
     q &= db.notas.periodoid==31 #1er CUATRIMESTRE
@@ -197,7 +197,7 @@ def listaparciales():
             condicion_map[fila.alumnoid]="LIBRE"
         else:
             condicion_map[fila.alumnoid]="REGULAR"
-    # notas_4p_map[fila.alumnoid] notas_4p_map[fila.alumnoid]
+            #notas_4p_map[fila.alumnoid] notas_4p_map[fila.alumnoid]
 
     return{'materias':materias, 'alumnos':alumnos, "notas_1p_map": notas_1p_map,"notas_2p_map": notas_2p_map,"notas_3p_map": notas_3p_map,"notas_4p_map": notas_4p_map,"condicion_map":condicion_map}
 

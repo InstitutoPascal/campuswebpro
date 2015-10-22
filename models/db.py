@@ -37,6 +37,7 @@ else:
 from gluon.tools import *
 auth=Auth(globals(),db)                      # authentication/authorization
 auth.settings.hmac_key='sha512:b13de948-def0-4fd4-baf6-bef3f83b5d88'
+auth.settings.create_user_groups=None
 auth.define_tables(migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)                         # creates all needed tables
 crud=Crud(globals(),db)                      # for CRUD helpers using auth
 service=Service(globals())                   # for json, xml, jsonrpc, xmlrpc, amfrpc

@@ -1,9 +1,8 @@
 {{extend 'layout.html'}} 
-{{extend 'layout.html'}} 
 <FORM method="POST"> 
     <center>
         <h1><B>{{for materia in materias:}}{{=materia.nombre}}{{pass}}</B></h1>
-        FECHA:<INPUT type="text" Name="fecha" size="11" VALUE={{=request.now.date().strftime('%d/%m/%Y')}}> 
+        <h1><B>FECHA: {{=request.now.date().strftime('%d/%m/%Y')}}</h1></B>
     <br><br>
     <TABLE style="border: 1px solid white">
         <tr style="border: 1px solid white">
@@ -32,7 +31,7 @@
         </tr>
     </TABLE>
     <br>
-<INPUT type="submit" value="GUARDAR" name= "confirmar">
+<INPUT type="submit" value="Guardar" name= "confirmar">
 <a href="../index.html"><input type=button value="Volver" ></a>
 </center>
 </FORM>

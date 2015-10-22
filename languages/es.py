@@ -176,6 +176,7 @@
 'Ingresar': 'Ingresar',
 'Iniciar': 'Iniciar',
 'Iniciar seción': 'Iniciar seción',
+'Iniciar sesión': 'Iniciar sesión',
 'Inicio de sesión': 'Inicio de sesión',
 'Inserción Laboral': 'Inserción Laboral',
 'Insersión Laboral': 'Insersión Laboral',

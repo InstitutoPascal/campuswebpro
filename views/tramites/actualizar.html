@@ -9,7 +9,10 @@
 <html>
     <p><b> Alumno : {{=alumno.nombre}}</b></p>
     <p><b> Dni : {{=alumno.dni}}</b></p>
-
+    {{for i in nombre: }}
+       <p><b> Carrera : {{=i.carreras.nombre}}</b></p>
+    {{pass}}
+    
     
    <table id="tabla">
    <TH align="center" id="tabla" COLSPAN=3> Tramites del alumno</TH>    

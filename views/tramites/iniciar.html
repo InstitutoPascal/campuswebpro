@@ -10,6 +10,10 @@
 
     <p><b> Alumno : {{=alumno.nombre}}</b></p> 
     <p><b> Dni : {{=alumno.dni}}</b></p>
+    {{for i in nombre: }}
+       <p><b> Carrera : {{=i.carreras.nombre}}</b></p>
+        </tr>
+    {{pass}}
 
     <p><b></b></p>
 <b><h1>Tramites:</h1></b>

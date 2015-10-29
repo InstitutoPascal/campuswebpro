@@ -59,6 +59,7 @@
 'Carreras': 'Carreras',
 'Cartelera': 'Cartelera',
 'Cerrar cesión': 'Cerrar cesión',
+'Cerrar Sesión': 'Cerrar Sesión',
 'certificado de alumno regular': 'certificado de alumno regular',
 'Change Password': 'Cambie Contraseña',
 'change password': 'cambiar contraseña',

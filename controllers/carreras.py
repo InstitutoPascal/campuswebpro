@@ -11,8 +11,11 @@ def materias():
     q &= db.asignaturas.carreraid==db.carreras.carreraid
     q &= db.asignaturas.materiaid==db.materias.materiaid
     q &= db.asignaturas.cursoid==db.cursos.cursoid
+    q &= db.comisiones.materiaid==db.materias.materiaid
+    #q &= db.profesores.comisionid==db.comisiones.comisionid
+    q &= db.personal.personalid==db.comisiones.personalid
 
-    filas=db(q).select()
+    filas=db(q).select(db.materias.nombre, db.materias.codigo, db.personal.nombre)
     return{'filas': filas}
 
 def sistemas():
@@ -46,21 +49,8 @@ def programas():
     
     return{}
 
-def index():
-    q=db.horarios.horarioid>0
-    horarios=db(q).select()
-    return{'horarios':horarios}
-
 def horarios():
-
-    horariosid=request.args[0]
-    q= db.horarios.horaid==horarioid
-    q &= db.horarios.horaid==db.hora.horaid
-    q &= db.horarios.comisionid==db.comision.comisionid
-    q &= db.horarios.diaid==db.dia.diaid
-   
-    filas=db(q).select()
-    return{'filas': filas}
+    return{}
 
 def metodologia():
     return {}

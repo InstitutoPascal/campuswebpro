@@ -29,10 +29,25 @@ def por_que_elegirnos():
 
   
 
-def plantel_docente():
+#def plantel_docente():
           
-    filas=db(db.personal.personalid>0).select(db.personal.dni,db.personal.nombre,db.personal.dni,db.personal.foto)
+def plantel_docente():
+    form = SQLFORM.factory(
+        Field("nombre"),
+        Field("cargoid", db.cargos, requires=IS_IN_DB(db, db.cargos.id, "%(descripcion)s")),
+    )
+    
+    q = db.personal.personalid >0 ## == db.profesores.personalid
+    
+    if form.accepts(request.vars, session):
+        q &= db.personal.nombre.startswith(form.vars.nombre)
+        if form.vars.cargoid:
+            q &= db.personal.cargoid == form.vars.cargoid
         
-    return {'filas':filas}
+    filas=db(q).select(db.personal.dni,db.personal.nombre,db.personal.dni,db.personal.foto)
+ 
+    return {'filas':filas, 'form': form, "sql": db._lastsql}
+
+  
 
 def director(): return plugin_flatpage()

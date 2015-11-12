@@ -7,19 +7,26 @@ def index():
 
 def materias():
     carreraid=request.args[0]
-    q= db.asignaturas.carreraid==carreraid
-    q &= db.asignaturas.carreraid==db.carreras.carreraid
-    q &= db.asignaturas.materiaid==db.materias.materiaid
-    q &= db.asignaturas.cursoid==db.cursos.cursoid
-    q &= db.comisiones.materiaid==db.materias.materiaid
-    #q &= db.profesores.comisionid==db.comisiones.comisionid
-    q &= db.personal.personalid==db.comisiones.personalid
+    q=db.asignaturas.carreraid==carreraid
+    
+    q&= db.asignaturas.carreraid==db.carreras.carreraid
+    
+    q&= db.asignaturas.materiaid==db.materias.materiaid
+    
+    q&= db.asignaturas.cursoid==db.cursos.cursoid
+    
+    q&= db.comisiones.materiaid==db.materias.materiaid
+    
+    q&= db.personal.personalid==db.comisiones.personalid
+    
+    filas=db(q).select()
+    
+    return {'filas':filas}
+    
+    
 
-    filas=db(q).select(db.materias.nombre, db.materias.codigo, db.personal.nombre)
-    return{'filas': filas}
-
-def sistemas():
-    return {}
+    def sistemas():
+     return {}
 
 def salud():
     return {}
@@ -46,8 +53,7 @@ def redes():
     return {}
     
 def programas():
-    
-    return{}
+     return{}
 
 def horarios():
     return{}

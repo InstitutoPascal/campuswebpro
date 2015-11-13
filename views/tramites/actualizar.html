@@ -12,30 +12,29 @@
     {{for i in nombre: }}
        <p><b> Carrera : {{=i.carreras.nombre}}</b></p>
     {{pass}}
+
+        <FORM ACTION="">
+Listado de tramites    
+    <TABLE  style="border: 1px solid white">
+    <tr style="border: 1px solid white">
+    <td style="border: 1px solid white"><B>Nº Tramite</B></td>
+    <td style="border: 1px solid white"><B>Descripción</B></td>
+    <td style="border: 1px solid white"><B>Estado</B></td>
+    </tr>
+    {{for q in lista: }}
+
+    <tr style="border: 1px solid white">
+     <td style="border: 1px solid white">{{=q.tramites.tramiteid}}</td>
+     <td style="border: 1px solid white">{{=q.tramites.descripcion}}</td>
+     <td style="border: 1px solid white">{{=q.estados.descripcion}}</td>
+    </tr>
+     
+    {{pass}}
+
+    </TABLE>
     
+</form> 
     
-   <table id="tabla">
-   <TH align="center" id="tabla" COLSPAN=3> Tramites del alumno</TH>    
-       </tr>
-           <td id="tabla">N° Tramite</td>
-           <td id="tabla">Tipo de tramite</td>
-           <td id="tabla">Estado</td>
-       </tr>
-	<TR>
-		<TD id="tabla"> 1 </TD> <TD id="tabla"> 2 </TD> <TD id="tabla"><select>
-                                        <option> Iniciado </option>
-                                        
-                                        <option> Finalizado </option>
-                                    </select></TD>
-	</TR>
-	<TR>
-		<TD id="tabla">2 </TD> <TD id="tabla">3 </TD> <TD id="tabla"><select> 
-                                        <option> Iniciado </option>
-                                        
-                                        <option> Finalizado </option>
-                                   </select> </TD>
-	</TR>
-</TABLE>	
 <p><b> Comentarios:</b></p>
 <form name=myform>
 <textarea name=mytextarea  cols=45 rows=8>

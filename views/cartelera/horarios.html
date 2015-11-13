@@ -16,6 +16,7 @@ Duracion de la carrera: 3 años
     </tr>
     {{for fila in filas:}}
 
+
     <tr style="border: 1px solid white">
      <td style="border: 1px solid white">{{=A(fila.materias.nombre, _href=URL(f="editar_horarios", args=[fila.horarios.horarioid]), )}}</td>
      <td style="border: 1px solid white">{{=fila.materias.cursoid}}</td>

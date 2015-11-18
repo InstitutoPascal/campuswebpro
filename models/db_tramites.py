@@ -4,7 +4,7 @@ migrate = True
 
 db.define_table('tramites',
     Field('tramiteid', type='id'),
-    Field('descripcion', type='string', default=""),
+    Field('descripcion', type='string',default=""),
 #    Field('arancelado', type='boolean', default=False),
     format= "%(tramiteid)s [%(descripcion)s]",
     migrate=MIGRATE, fake_migrate=FAKE_MIGRATE)

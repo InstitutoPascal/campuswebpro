@@ -61,9 +61,16 @@ def actualizar():
                        db.estados.descripcion)
     
     return dict (lista=lista, nombre=nombre, alumno=alumno)
-    
-    
 
+@auth.requires_membership(role='Directivos')
+def personal():
+    response.subtitle= "Menú administrador tramite"
+    q = db.personal.user_id== auth.user_id    #guardo en la consulta el registro del alumno
+    personal= db(q).select().first() #traemos el alumno para notificarlo en la vista
+    q = db.personal.personalid==db.personal.personalid
+    nombre = db(q).select(db.personal.nombre)
+
+    return dict (nombre=nombre, personal=personal)
 
 
 @auth.requires_membership(role='Alumnos')

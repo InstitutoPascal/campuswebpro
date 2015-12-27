@@ -375,7 +375,13 @@ def examenes_parciales():
             materiaid=fila.comisiones.materiaid
 			#materia_id = alumno.materiaid
 			# calificacion_id = 1
-            nota = int(request.vars.get("NOTA_%s" % alumno_id, 0))
+            # obtengo valor del casillero
+            nota = request.vars.get("NOTA_%s" % alumno_id, '')
+            # verifico que no esté vacio y sea un número válido:
+            if nota != '' and nota.isdigit():
+                nota = int(nota)   # convierto a valor numérico
+            else:
+                nota = None        # reemplazo por un valor null
 			# libro = request.vars.libro
 			# folio =request.vars.folio
 			#observaciones= request.vars.get("observaciones_%s" % alumno_id, 0)

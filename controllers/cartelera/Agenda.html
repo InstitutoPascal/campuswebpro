@@ -1,0 +1,34 @@
+@auth.requires_membership(role='Docentes')
+def agregar_evento():
+    form = SQLFORM(db.agenda)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="agenda"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}
+
+@auth.requires_membership(role='Docentes')
+def editar_evento():
+    agendaid = request.args[0]
+    form = SQLFORM(db.agenda, agendaid)
+    if form.accepts(request.vars, session):
+        session.flash = "OK!"
+        redirect(URL(f="agenda"))
+    elif form.errors:
+        response.flash = "Corrija los errores!"
+    else:
+        response.flash = "complete el formulario"
+    return {"form": form}
+
+def agenda():
+    response.title = "cartelera"
+    response.subtitle="Agenda"
+    q=db.agenda.materiaid==db.materias.materiaid
+    q&=db.agenda.profesorid==db.profesores.profesorid
+    q&=db.agenda.agenda_tiposid==db.agenda_tipos.agenda_tiposid
+    q&=db.profesores.personalid==db.personal.personalid
+    filas=db(q).select(db.agenda.agendaid,db.agenda.fecha,db.personal.nombre,db.materias.nombre,db.agenda_tipos.nombre,db.agenda.mensaje)
+    return {'filas':filas}

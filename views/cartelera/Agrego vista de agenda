@@ -1,0 +1,34 @@
+ table{
+    border-collapse: collapse;
+    border: 1px solid white;
+  }
+  table td{
+    border: 1px solid white;
+  }
+</style>
+<h1>Agenda</h1>
+<div id= "div_centrado">
+<table id="tabla" align="center" cellspacing="2" cellpadding="2" border="1" >
+        <tr>
+            <td align="center"><b>Fecha</b></td>
+            <td align="center"><b>Profesor</b></td>
+            <td align="center"><b>Materia</b></td>
+            <td align="center"><b>Tipo</b></td>
+            <td align="center"><b>Comentario</b></td>
+         </tr>
+        {{for fila in filas:}}
+           <tr>
+             <td>{{=A(fila.agenda.fecha, _href=URL(f="editar_evento", args=[fila.agenda.agendaid]), )}}</td>
+             <td>{{=fila.personal.nombre}}</td>
+             <td>{{=fila.materias.nombre}}</td>
+             <td>{{=fila.agenda_tipos.nombre}}</td>
+             <td>{{=fila.agenda.mensaje}}</td>
+          </tr>
+        {{pass}}
+    </table>
+    <br>
+    <center>
+        <a href='{{=URL("agregar_evento")}}'><input type="button" value="AGREGAR EVENTO"></a>
+        <a href="menu.html"><input type=button value="VOLVER" ></a>
+    <center>
+</div>
